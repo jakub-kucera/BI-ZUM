@@ -16,6 +16,8 @@ private:
 
     const char *const MAP_FILE = "../examples/";
 
+    const int TICK_SPEED = 1 * 1000;
+
     std::shared_ptr<CAlgorithm> m_Algorithm;
 
     std::shared_ptr<CMap> m_Map;

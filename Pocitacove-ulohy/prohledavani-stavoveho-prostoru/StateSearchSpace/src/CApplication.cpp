@@ -25,14 +25,26 @@ void CApplication::start() {
 
     paintMap();
 
-    //loop
+    //searching for destination
     while(!m_Algorithm->foundDestination()) {
         //run algorithm step
         m_Algorithm->move();
         //show changes
-        m_Interface->paintMap();
+        paintMap();
         //sleep
-        sleep(1);
+//        sleep(0.1);
+        usleep(TICK_SPEED);
+    }
+
+    m_Algorithm->initPath();
+    //creating path
+    while(!m_Algorithm->foundStart()) {
+        //move path
+        m_Algorithm->movePath();
+        //show changes
+        paintMap();
+        //sleep
+        usleep(TICK_SPEED * 1);
     }
 
 }

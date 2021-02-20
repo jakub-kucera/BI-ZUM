@@ -16,6 +16,7 @@ struct CCoordinates {
 
     CCoordinates() : m_X(0), m_Y(0) {}
 
+
     CCoordinates(unsigned int x, unsigned int y) : m_X(x), m_Y(y) {}
 
     friend std::ostream &operator<<(std::ostream &out, const CCoordinates &cords) {

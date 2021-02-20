@@ -6,9 +6,12 @@
 #define STATESEARCHSPACE_CDFS_HPP
 
 
+#include <stack>
 #include "CAlgorithm.hpp"
 
 class CDFS : public CAlgorithm {
+private:
+    std::stack<std::pair<CCoordinates, int>> m_Stack;
 public:
     explicit CDFS(const std::shared_ptr<CMap> &mMap);
 

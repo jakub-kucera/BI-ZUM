@@ -9,7 +9,9 @@
 CInterface::CInterface(std::shared_ptr<CMap> mMap) : m_Map(std::move(mMap)) {}
 
 void CInterface::paintMap() {
-    for(auto & line : m_Map->m_Map) {
+    clear();
+
+    for(auto & line : m_Map->m_MapChar) {
         std::cout << line << std::endl;
     }
 }
