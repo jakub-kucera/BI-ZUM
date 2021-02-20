@@ -1,0 +1,14 @@
+//
+// Created by kucerj56 on 20.02.21.
+//
+
+#ifndef STATESEARCHSPACE_CAPPLICATION_HPP
+#define STATESEARCHSPACE_CAPPLICATION_HPP
+
+
+class CApplication {
+
+};
+
+
+#endif //STATESEARCHSPACE_CAPPLICATION_HPP
