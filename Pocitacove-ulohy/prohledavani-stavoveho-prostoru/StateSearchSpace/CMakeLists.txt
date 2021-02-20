@@ -3,4 +3,4 @@ project(StateSearchSpace)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(StateSearchSpace src/main.cpp src/CApplication.cpp src/CApplication.hpp)
+add_executable(StateSearchSpace src/main.cpp src/CApplication.cpp src/CApplication.hpp src/CAlgorithm.cpp src/CAlgorithm.hpp src/CCoordinates.hpp src/CMap.hpp src/CInterface.cpp src/CInterface.hpp)

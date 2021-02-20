@@ -1,1 +1,1 @@
-/usr/bin/c++  -g   CMakeFiles/StateSearchSpace.dir/src/main.cpp.o CMakeFiles/StateSearchSpace.dir/src/CApplication.cpp.o  -o StateSearchSpace 
+/usr/bin/c++  -g   CMakeFiles/StateSearchSpace.dir/src/main.cpp.o CMakeFiles/StateSearchSpace.dir/src/CApplication.cpp.o CMakeFiles/StateSearchSpace.dir/src/CAlgorithm.cpp.o CMakeFiles/StateSearchSpace.dir/src/CInterface.cpp.o  -o StateSearchSpace 

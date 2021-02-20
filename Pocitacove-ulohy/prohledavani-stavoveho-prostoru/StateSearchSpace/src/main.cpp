@@ -1,6 +1,13 @@
 #include <iostream>
+#include "CApplication.hpp"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    CApplication application;
+    try {
+        application.start();
+    }
+    catch (const std::exception &e) {
+        std::cout << "Error: " << e.what() << std::endl;
+    }
     return 0;
 }

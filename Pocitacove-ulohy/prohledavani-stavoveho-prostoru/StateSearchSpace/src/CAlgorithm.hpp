@@ -1,0 +1,14 @@
+//
+// Created by kucerj56 on 20.02.21.
+//
+
+#ifndef STATESEARCHSPACE_CALGORITHM_HPP
+#define STATESEARCHSPACE_CALGORITHM_HPP
+
+
+class CAlgorithm {
+
+};
+
+
+#endif //STATESEARCHSPACE_CALGORITHM_HPP

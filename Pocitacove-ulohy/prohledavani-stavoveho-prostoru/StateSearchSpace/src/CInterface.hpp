@@ -1,0 +1,14 @@
+//
+// Created by kucerj56 on 20.02.21.
+//
+
+#ifndef STATESEARCHSPACE_CINTERFACE_HPP
+#define STATESEARCHSPACE_CINTERFACE_HPP
+
+
+class CInterface {
+
+};
+
+
+#endif //STATESEARCHSPACE_CINTERFACE_HPP
