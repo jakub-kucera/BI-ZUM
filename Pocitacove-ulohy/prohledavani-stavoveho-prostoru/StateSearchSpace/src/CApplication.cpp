@@ -5,8 +5,10 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <unistd.h>
 #include "CApplication.hpp"
 #include "CCoordinates.hpp"
+#include "CDFS.hpp"
 
 CApplication::CApplication() {}
 
@@ -19,11 +21,19 @@ void CApplication::start() {
     loadMap();
 
     //chose algorithm
+    getAlgorithm();
+
+    paintMap();
 
     //loop
-    //run algorithm step
-    //show changes
-
+    while(!m_Algorithm->foundDestination()) {
+        //run algorithm step
+        m_Algorithm->move();
+        //show changes
+        m_Interface->paintMap();
+        //sleep
+        sleep(1);
+    }
 
 }
 
@@ -31,7 +41,7 @@ void CApplication::loadMap() {
     //gets name of file with map from user
     std::string mapFileName = getMapFileName();
 
-    //map =
+    getMap(mapFileName);
 
 }
 
@@ -90,4 +100,49 @@ void CApplication::getMap(const std::string& mapFileName) {
     inputStream.close();
 
     m_Map = std::make_shared<CMap>(map, start, end);
+    m_Interface = std::make_shared<CInterface>(m_Map);
+}
+
+void CApplication::paintMap() {
+    m_Interface->paintMap();
+}
+
+void CApplication::getAlgorithm() {
+    bool invalidInput = true;
+    int choice;
+
+    std::cout << "Choose what algorithm to use (1-5): " << std::endl;
+    std::cout << "1 - Random Search" << std::endl;
+    std::cout << "2 - DFS" << std::endl;
+    std::cout << "3 - BFS" << std::endl;
+    std::cout << "4 - Greedy Search" << std::endl;
+    std::cout << "5 - A*" << std::endl;
+
+
+    while (invalidInput) {
+        std::cin >> choice;
+        if (choice >= 0 && choice <= 5) {
+            invalidInput = false;
+        } else {
+            std::cout << "Invalid input, enter a valid one: " << std::endl;
+        }
+    }
+
+    switch (choice) {
+        case 1:
+            break;
+        case 2:
+            m_Algorithm = std::make_shared<CDFS>(m_Map);
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        case 5:
+            break;
+        default:
+            throw std::runtime_error("Incorrect algorithm id");
+
+    }
+
 }

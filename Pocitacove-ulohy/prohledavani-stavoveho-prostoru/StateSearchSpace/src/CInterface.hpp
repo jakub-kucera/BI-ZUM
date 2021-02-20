@@ -6,8 +6,22 @@
 #define STATESEARCHSPACE_CINTERFACE_HPP
 
 
-class CInterface {
+#include <memory>
+#include "CMap.hpp"
 
+class CInterface {
+public:
+    explicit CInterface(std::shared_ptr<CMap> mMap);
+
+    void paintMap();
+
+private:
+    // Sequence of characters that clears the users terminal.
+    const char * const CLEAR_COMMAND = "\x1B[2J\x1B[H";
+
+    std::shared_ptr<CMap> m_Map;
+
+    void clear();
 };
 
 

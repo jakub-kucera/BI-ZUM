@@ -6,8 +6,23 @@
 #define STATESEARCHSPACE_CALGORITHM_HPP
 
 
-class CAlgorithm {
+#include <memory>
+#include <utility>
+#include "CMap.hpp"
 
+class CAlgorithm {
+protected:
+    bool m_FoundDestination = false;
+
+    std::shared_ptr<CMap> m_Map;
+public:
+    explicit CAlgorithm(std::shared_ptr<CMap> mMap) : m_Map(std::move(mMap)) {}
+
+    virtual void move() = 0;
+
+    bool foundDestination() {
+        return m_FoundDestination;
+    };
 };
 
 

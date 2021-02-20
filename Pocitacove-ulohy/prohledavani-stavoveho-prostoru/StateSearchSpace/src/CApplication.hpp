@@ -9,6 +9,7 @@
 #include <memory>
 #include "CAlgorithm.hpp"
 #include "CMap.hpp"
+#include "CInterface.hpp"
 
 class CApplication {
 private:
@@ -26,6 +27,10 @@ private:
     std::string getMapFileName();
 
     void getMap(const std::string& mapFileName);
+
+    void paintMap();
+
+    void getAlgorithm();
 
 public:
     CApplication();

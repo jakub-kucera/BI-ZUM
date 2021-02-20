@@ -143,33 +143,6 @@ StateSearchSpace/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/StateSearchSpace.dir/build.make CMakeFiles/StateSearchSpace.dir/build
 .PHONY : StateSearchSpace/fast
 
-src/CAlgorithm.o: src/CAlgorithm.cpp.o
-
-.PHONY : src/CAlgorithm.o
-
-# target to build an object file
-src/CAlgorithm.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/StateSearchSpace.dir/build.make CMakeFiles/StateSearchSpace.dir/src/CAlgorithm.cpp.o
-.PHONY : src/CAlgorithm.cpp.o
-
-src/CAlgorithm.i: src/CAlgorithm.cpp.i
-
-.PHONY : src/CAlgorithm.i
-
-# target to preprocess a source file
-src/CAlgorithm.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/StateSearchSpace.dir/build.make CMakeFiles/StateSearchSpace.dir/src/CAlgorithm.cpp.i
-.PHONY : src/CAlgorithm.cpp.i
-
-src/CAlgorithm.s: src/CAlgorithm.cpp.s
-
-.PHONY : src/CAlgorithm.s
-
-# target to generate assembly for a file
-src/CAlgorithm.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/StateSearchSpace.dir/build.make CMakeFiles/StateSearchSpace.dir/src/CAlgorithm.cpp.s
-.PHONY : src/CAlgorithm.cpp.s
-
 src/CApplication.o: src/CApplication.cpp.o
 
 .PHONY : src/CApplication.o
@@ -196,6 +169,33 @@ src/CApplication.s: src/CApplication.cpp.s
 src/CApplication.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/StateSearchSpace.dir/build.make CMakeFiles/StateSearchSpace.dir/src/CApplication.cpp.s
 .PHONY : src/CApplication.cpp.s
+
+src/CDFS.o: src/CDFS.cpp.o
+
+.PHONY : src/CDFS.o
+
+# target to build an object file
+src/CDFS.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StateSearchSpace.dir/build.make CMakeFiles/StateSearchSpace.dir/src/CDFS.cpp.o
+.PHONY : src/CDFS.cpp.o
+
+src/CDFS.i: src/CDFS.cpp.i
+
+.PHONY : src/CDFS.i
+
+# target to preprocess a source file
+src/CDFS.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StateSearchSpace.dir/build.make CMakeFiles/StateSearchSpace.dir/src/CDFS.cpp.i
+.PHONY : src/CDFS.cpp.i
+
+src/CDFS.s: src/CDFS.cpp.s
+
+.PHONY : src/CDFS.s
+
+# target to generate assembly for a file
+src/CDFS.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StateSearchSpace.dir/build.make CMakeFiles/StateSearchSpace.dir/src/CDFS.cpp.s
+.PHONY : src/CDFS.cpp.s
 
 src/CInterface.o: src/CInterface.cpp.o
 
@@ -260,12 +260,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... StateSearchSpace"
-	@echo "... src/CAlgorithm.o"
-	@echo "... src/CAlgorithm.i"
-	@echo "... src/CAlgorithm.s"
 	@echo "... src/CApplication.o"
 	@echo "... src/CApplication.i"
 	@echo "... src/CApplication.s"
+	@echo "... src/CDFS.o"
+	@echo "... src/CDFS.i"
+	@echo "... src/CDFS.s"
 	@echo "... src/CInterface.o"
 	@echo "... src/CInterface.i"
 	@echo "... src/CInterface.s"

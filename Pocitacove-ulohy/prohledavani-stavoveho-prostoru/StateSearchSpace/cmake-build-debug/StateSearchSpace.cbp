@@ -82,9 +82,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CAlgorithm.cpp">
-			<Option target="StateSearchSpace"/>
-		</Unit>
 		<Unit filename="/home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CAlgorithm.hpp">
 			<Option target="StateSearchSpace"/>
 		</Unit>
@@ -95,6 +92,12 @@
 			<Option target="StateSearchSpace"/>
 		</Unit>
 		<Unit filename="/home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CCoordinates.hpp">
+			<Option target="StateSearchSpace"/>
+		</Unit>
+		<Unit filename="/home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CDFS.cpp">
+			<Option target="StateSearchSpace"/>
+		</Unit>
+		<Unit filename="/home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CDFS.hpp">
 			<Option target="StateSearchSpace"/>
 		</Unit>
 		<Unit filename="/home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CInterface.cpp">

@@ -7,6 +7,12 @@
 #IncludeRegexTransform: 
 
 /home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CAlgorithm.hpp
+memory
+-
+utility
+-
+CMap.hpp
+/home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CMap.hpp
 
 /home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CApplication.cpp
 iostream
@@ -19,6 +25,8 @@ CApplication.hpp
 /home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CApplication.hpp
 CCoordinates.hpp
 /home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CCoordinates.hpp
+CDFS.hpp
+/home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CDFS.hpp
 
 /home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CApplication.hpp
 memory
@@ -27,10 +35,32 @@ CAlgorithm.hpp
 /home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CAlgorithm.hpp
 CMap.hpp
 /home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CMap.hpp
+CInterface.hpp
+/home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CInterface.hpp
 
 /home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CCoordinates.hpp
 iostream
 -
+
+/home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CDFS.cpp
+CDFS.hpp
+/home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CDFS.hpp
+
+/home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CDFS.hpp
+CAlgorithm.hpp
+/home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CAlgorithm.hpp
+
+/home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CInterface.cpp
+CInterface.hpp
+/home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CInterface.hpp
+utility
+-
+
+/home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CInterface.hpp
+memory
+-
+CMap.hpp
+/home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CMap.hpp
 
 /home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CMap.hpp
 utility
