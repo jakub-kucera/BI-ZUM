@@ -251,6 +251,33 @@ src/CInterface.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/StateSearchSpace.dir/build.make CMakeFiles/StateSearchSpace.dir/src/CInterface.cpp.s
 .PHONY : src/CInterface.cpp.s
 
+src/CRandomSearch.o: src/CRandomSearch.cpp.o
+
+.PHONY : src/CRandomSearch.o
+
+# target to build an object file
+src/CRandomSearch.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StateSearchSpace.dir/build.make CMakeFiles/StateSearchSpace.dir/src/CRandomSearch.cpp.o
+.PHONY : src/CRandomSearch.cpp.o
+
+src/CRandomSearch.i: src/CRandomSearch.cpp.i
+
+.PHONY : src/CRandomSearch.i
+
+# target to preprocess a source file
+src/CRandomSearch.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StateSearchSpace.dir/build.make CMakeFiles/StateSearchSpace.dir/src/CRandomSearch.cpp.i
+.PHONY : src/CRandomSearch.cpp.i
+
+src/CRandomSearch.s: src/CRandomSearch.cpp.s
+
+.PHONY : src/CRandomSearch.s
+
+# target to generate assembly for a file
+src/CRandomSearch.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StateSearchSpace.dir/build.make CMakeFiles/StateSearchSpace.dir/src/CRandomSearch.cpp.s
+.PHONY : src/CRandomSearch.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -299,6 +326,9 @@ help:
 	@echo "... src/CInterface.o"
 	@echo "... src/CInterface.i"
 	@echo "... src/CInterface.s"
+	@echo "... src/CRandomSearch.o"
+	@echo "... src/CRandomSearch.i"
+	@echo "... src/CRandomSearch.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

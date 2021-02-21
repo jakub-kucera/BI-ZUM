@@ -14,37 +14,40 @@
 class CMap {
 public:
     std::vector<std::string> m_MapChar;
-    std::vector<std::vector<int>> m_MapNum;
+//    std::vector<std::vector<int>> m_MapNum;
+    std::vector<std::vector<CCoordinates>> m_MapPred;
     CCoordinates m_Start;
     CCoordinates m_end;
 
     CMap(std::vector<std::string> mMap, const CCoordinates &mStart, const CCoordinates &mEnd)
         : m_MapChar(std::move(mMap)), m_Start(mStart), m_end(mEnd) {
-        m_MapNum.resize(m_MapChar.size());
+        m_MapPred.resize(m_MapChar.size());
         int rowLength = m_MapChar[0].size();
-        for (auto & row : m_MapNum) {
+        for (auto & row : m_MapPred) {
             row.resize(rowLength);
         }
 
         //r, c
 
-        for(int r = 0; r < m_MapChar.size(); r++) {
-            for (int c = 0; c < m_MapChar[0].size(); c++) {
-                switch (m_MapChar[r][c]) {
+        CCoordinates empty(-1,-1);
+
+        for(int y = 0; y < m_MapChar.size(); y++) {
+            for (int x = 0; x < m_MapChar[0].size(); x++) {
+                switch (m_MapChar[y][x]) {
                     case ' ':
-                        m_MapNum[r][c] = INT_MAX;
+                        m_MapPred[y][x] = empty;
                         break;
                     case 'X':
-                        m_MapNum[r][c] = INT_MAX;
+                        m_MapPred[y][x] = empty;
                         break;
                     case 'S':
-                        m_MapNum[r][c] = 0;
+                        m_MapPred[y][x] = CCoordinates(x, y);
                         break;
                     case 'E':
-                        m_MapNum[r][c] = INT_MAX;
+                        m_MapPred[y][x] = empty;
                         break;
                     default:
-                        throw std::runtime_error("Unknown character on map: " + std::to_string(m_MapChar[r][c]));
+                        throw std::runtime_error("Unknown character on map: " + std::to_string(m_MapChar[y][x]));
 
                 }
             }

@@ -11,7 +11,8 @@
 
 class CBFS : public CAlgorithm {
 private:
-    std::queue<std::pair<CCoordinates, int>> m_Queue;
+    //current coordinates, predecessors coordinates
+    std::queue<std::pair<CCoordinates, CCoordinates>> m_Queue;
 public:
     explicit CBFS(const std::shared_ptr<CMap> &mMap);
 
