@@ -170,6 +170,33 @@ src/CApplication.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/StateSearchSpace.dir/build.make CMakeFiles/StateSearchSpace.dir/src/CApplication.cpp.s
 .PHONY : src/CApplication.cpp.s
 
+src/CBFS.o: src/CBFS.cpp.o
+
+.PHONY : src/CBFS.o
+
+# target to build an object file
+src/CBFS.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StateSearchSpace.dir/build.make CMakeFiles/StateSearchSpace.dir/src/CBFS.cpp.o
+.PHONY : src/CBFS.cpp.o
+
+src/CBFS.i: src/CBFS.cpp.i
+
+.PHONY : src/CBFS.i
+
+# target to preprocess a source file
+src/CBFS.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StateSearchSpace.dir/build.make CMakeFiles/StateSearchSpace.dir/src/CBFS.cpp.i
+.PHONY : src/CBFS.cpp.i
+
+src/CBFS.s: src/CBFS.cpp.s
+
+.PHONY : src/CBFS.s
+
+# target to generate assembly for a file
+src/CBFS.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StateSearchSpace.dir/build.make CMakeFiles/StateSearchSpace.dir/src/CBFS.cpp.s
+.PHONY : src/CBFS.cpp.s
+
 src/CDFS.o: src/CDFS.cpp.o
 
 .PHONY : src/CDFS.o
@@ -263,6 +290,9 @@ help:
 	@echo "... src/CApplication.o"
 	@echo "... src/CApplication.i"
 	@echo "... src/CApplication.s"
+	@echo "... src/CBFS.o"
+	@echo "... src/CBFS.i"
+	@echo "... src/CBFS.s"
 	@echo "... src/CDFS.o"
 	@echo "... src/CDFS.i"
 	@echo "... src/CDFS.s"

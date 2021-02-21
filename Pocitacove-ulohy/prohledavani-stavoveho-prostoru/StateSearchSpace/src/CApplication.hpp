@@ -16,7 +16,15 @@ private:
 
     const char *const MAP_FILE = "../examples/";
 
-    const int TICK_SPEED = 1 * 1000;
+    const int TICK_SPEED = 0 * 1000;
+
+    const bool SKIP_SEARCH_DRAW = true;
+
+    const int SKIP_FRAMES_SEARCH_DESTINATION = 1000;
+
+    const bool SKIP_CREATE_PATH_DRAW = true;
+
+    const int SKIP_FRAMES_CREATE_PATH = 100;
 
     std::shared_ptr<CAlgorithm> m_Algorithm;
 

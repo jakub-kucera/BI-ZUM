@@ -9,6 +9,7 @@
 #include "CApplication.hpp"
 #include "CCoordinates.hpp"
 #include "CDFS.hpp"
+#include "CBFS.hpp"
 
 CApplication::CApplication() {}
 
@@ -25,27 +26,41 @@ void CApplication::start() {
 
     paintMap();
 
+
+    int skippedFrames = 0;
     //searching for destination
     while(!m_Algorithm->foundDestination()) {
         //run algorithm step
         m_Algorithm->move();
-        //show changes
-        paintMap();
-        //sleep
-//        sleep(0.1);
-        usleep(TICK_SPEED);
+
+        if(++skippedFrames > SKIP_FRAMES_SEARCH_DESTINATION && !SKIP_SEARCH_DRAW){
+            //show changes
+            paintMap();
+            //sleep
+            usleep(TICK_SPEED);
+
+            skippedFrames = 0;
+        }
     }
 
+    skippedFrames = 0;
     m_Algorithm->initPath();
     //creating path
     while(!m_Algorithm->foundStart()) {
         //move path
         m_Algorithm->movePath();
-        //show changes
-        paintMap();
-        //sleep
-        usleep(TICK_SPEED * 1);
+
+        if(++skippedFrames > SKIP_FRAMES_CREATE_PATH && !SKIP_CREATE_PATH_DRAW){
+            //show changes
+            paintMap();
+            //sleep
+            usleep(TICK_SPEED);
+
+            skippedFrames = 0;
+        }
     }
+
+    paintMap();
 
 }
 
@@ -147,6 +162,7 @@ void CApplication::getAlgorithm() {
             m_Algorithm = std::make_shared<CDFS>(m_Map);
             break;
         case 3:
+            m_Algorithm = std::make_shared<CBFS>(m_Map);
             break;
         case 4:
             break;
