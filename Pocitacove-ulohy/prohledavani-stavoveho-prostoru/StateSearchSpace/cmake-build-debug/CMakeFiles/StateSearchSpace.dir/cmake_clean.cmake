@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/StateSearchSpace.dir/src/CApplication.cpp.o"
   "CMakeFiles/StateSearchSpace.dir/src/CBFS.cpp.o"
   "CMakeFiles/StateSearchSpace.dir/src/CDFS.cpp.o"
+  "CMakeFiles/StateSearchSpace.dir/src/CGreedySearch.cpp.o"
   "CMakeFiles/StateSearchSpace.dir/src/CInterface.cpp.o"
   "CMakeFiles/StateSearchSpace.dir/src/CRandomSearch.cpp.o"
   "CMakeFiles/StateSearchSpace.dir/src/main.cpp.o"

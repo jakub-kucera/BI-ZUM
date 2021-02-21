@@ -224,6 +224,33 @@ src/CDFS.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/StateSearchSpace.dir/build.make CMakeFiles/StateSearchSpace.dir/src/CDFS.cpp.s
 .PHONY : src/CDFS.cpp.s
 
+src/CGreedySearch.o: src/CGreedySearch.cpp.o
+
+.PHONY : src/CGreedySearch.o
+
+# target to build an object file
+src/CGreedySearch.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StateSearchSpace.dir/build.make CMakeFiles/StateSearchSpace.dir/src/CGreedySearch.cpp.o
+.PHONY : src/CGreedySearch.cpp.o
+
+src/CGreedySearch.i: src/CGreedySearch.cpp.i
+
+.PHONY : src/CGreedySearch.i
+
+# target to preprocess a source file
+src/CGreedySearch.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StateSearchSpace.dir/build.make CMakeFiles/StateSearchSpace.dir/src/CGreedySearch.cpp.i
+.PHONY : src/CGreedySearch.cpp.i
+
+src/CGreedySearch.s: src/CGreedySearch.cpp.s
+
+.PHONY : src/CGreedySearch.s
+
+# target to generate assembly for a file
+src/CGreedySearch.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StateSearchSpace.dir/build.make CMakeFiles/StateSearchSpace.dir/src/CGreedySearch.cpp.s
+.PHONY : src/CGreedySearch.cpp.s
+
 src/CInterface.o: src/CInterface.cpp.o
 
 .PHONY : src/CInterface.o
@@ -323,6 +350,9 @@ help:
 	@echo "... src/CDFS.o"
 	@echo "... src/CDFS.i"
 	@echo "... src/CDFS.s"
+	@echo "... src/CGreedySearch.o"
+	@echo "... src/CGreedySearch.i"
+	@echo "... src/CGreedySearch.s"
 	@echo "... src/CInterface.o"
 	@echo "... src/CInterface.i"
 	@echo "... src/CInterface.s"

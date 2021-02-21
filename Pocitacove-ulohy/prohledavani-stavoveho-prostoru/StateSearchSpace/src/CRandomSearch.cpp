@@ -33,7 +33,7 @@ void CRandomSearch::move() {
         return;
     }
 
-    m_Map->m_MapChar[coords.m_Y][coords.m_X] = '#';
+    m_Map->m_MapChar[coords.m_Y][coords.m_X] = '#'; //todo change # to opened instead of closed
     m_Map->m_MapPred[coords.m_Y][coords.m_X]  = predecessorCoords;
 
     m_Set.emplace(CCoordinates(coords.m_X + 1, coords.m_Y), coords);

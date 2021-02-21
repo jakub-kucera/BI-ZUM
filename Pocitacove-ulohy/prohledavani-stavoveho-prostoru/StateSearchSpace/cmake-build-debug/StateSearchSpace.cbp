@@ -109,6 +109,12 @@
 		<Unit filename="/home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CDFS.hpp">
 			<Option target="StateSearchSpace"/>
 		</Unit>
+		<Unit filename="/home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CGreedySearch.cpp">
+			<Option target="StateSearchSpace"/>
+		</Unit>
+		<Unit filename="/home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CGreedySearch.hpp">
+			<Option target="StateSearchSpace"/>
+		</Unit>
 		<Unit filename="/home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CInterface.cpp">
 			<Option target="StateSearchSpace"/>
 		</Unit>

@@ -11,6 +11,7 @@
 #include "CDFS.hpp"
 #include "CBFS.hpp"
 #include "CRandomSearch.hpp"
+#include "CGreedySearch.hpp"
 
 CApplication::CApplication() {}
 
@@ -167,6 +168,7 @@ void CApplication::getAlgorithm() {
             m_Algorithm = std::make_shared<CBFS>(m_Map);
             break;
         case 4:
+            m_Algorithm = std::make_shared<CGreedySearch>(m_Map);
             break;
         case 5:
             break;
