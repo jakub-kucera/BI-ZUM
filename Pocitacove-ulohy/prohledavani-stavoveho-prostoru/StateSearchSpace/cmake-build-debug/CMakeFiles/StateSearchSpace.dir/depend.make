@@ -6,18 +6,22 @@ CMakeFiles/StateSearchSpace.dir/src/CApplication.cpp.o: ../src/CApplication.cpp
 CMakeFiles/StateSearchSpace.dir/src/CApplication.cpp.o: ../src/CApplication.hpp
 CMakeFiles/StateSearchSpace.dir/src/CApplication.cpp.o: ../src/CBFS.hpp
 CMakeFiles/StateSearchSpace.dir/src/CApplication.cpp.o: ../src/CCoordinates.hpp
+CMakeFiles/StateSearchSpace.dir/src/CApplication.cpp.o: ../src/CCoordinatesPair.hpp
 CMakeFiles/StateSearchSpace.dir/src/CApplication.cpp.o: ../src/CDFS.hpp
 CMakeFiles/StateSearchSpace.dir/src/CApplication.cpp.o: ../src/CInterface.hpp
 CMakeFiles/StateSearchSpace.dir/src/CApplication.cpp.o: ../src/CMap.hpp
+CMakeFiles/StateSearchSpace.dir/src/CApplication.cpp.o: ../src/CRandomSearch.hpp
 
 CMakeFiles/StateSearchSpace.dir/src/CBFS.cpp.o: ../src/CAlgorithm.hpp
 CMakeFiles/StateSearchSpace.dir/src/CBFS.cpp.o: ../src/CBFS.cpp
 CMakeFiles/StateSearchSpace.dir/src/CBFS.cpp.o: ../src/CBFS.hpp
 CMakeFiles/StateSearchSpace.dir/src/CBFS.cpp.o: ../src/CCoordinates.hpp
+CMakeFiles/StateSearchSpace.dir/src/CBFS.cpp.o: ../src/CCoordinatesPair.hpp
 CMakeFiles/StateSearchSpace.dir/src/CBFS.cpp.o: ../src/CMap.hpp
 
 CMakeFiles/StateSearchSpace.dir/src/CDFS.cpp.o: ../src/CAlgorithm.hpp
 CMakeFiles/StateSearchSpace.dir/src/CDFS.cpp.o: ../src/CCoordinates.hpp
+CMakeFiles/StateSearchSpace.dir/src/CDFS.cpp.o: ../src/CCoordinatesPair.hpp
 CMakeFiles/StateSearchSpace.dir/src/CDFS.cpp.o: ../src/CDFS.cpp
 CMakeFiles/StateSearchSpace.dir/src/CDFS.cpp.o: ../src/CDFS.hpp
 CMakeFiles/StateSearchSpace.dir/src/CDFS.cpp.o: ../src/CMap.hpp
@@ -26,6 +30,13 @@ CMakeFiles/StateSearchSpace.dir/src/CInterface.cpp.o: ../src/CCoordinates.hpp
 CMakeFiles/StateSearchSpace.dir/src/CInterface.cpp.o: ../src/CInterface.cpp
 CMakeFiles/StateSearchSpace.dir/src/CInterface.cpp.o: ../src/CInterface.hpp
 CMakeFiles/StateSearchSpace.dir/src/CInterface.cpp.o: ../src/CMap.hpp
+
+CMakeFiles/StateSearchSpace.dir/src/CRandomSearch.cpp.o: ../src/CAlgorithm.hpp
+CMakeFiles/StateSearchSpace.dir/src/CRandomSearch.cpp.o: ../src/CCoordinates.hpp
+CMakeFiles/StateSearchSpace.dir/src/CRandomSearch.cpp.o: ../src/CCoordinatesPair.hpp
+CMakeFiles/StateSearchSpace.dir/src/CRandomSearch.cpp.o: ../src/CMap.hpp
+CMakeFiles/StateSearchSpace.dir/src/CRandomSearch.cpp.o: ../src/CRandomSearch.cpp
+CMakeFiles/StateSearchSpace.dir/src/CRandomSearch.cpp.o: ../src/CRandomSearch.hpp
 
 CMakeFiles/StateSearchSpace.dir/src/main.cpp.o: ../src/CAlgorithm.hpp
 CMakeFiles/StateSearchSpace.dir/src/main.cpp.o: ../src/CApplication.hpp

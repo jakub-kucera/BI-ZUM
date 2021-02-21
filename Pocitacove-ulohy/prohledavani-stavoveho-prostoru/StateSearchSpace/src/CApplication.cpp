@@ -10,6 +10,7 @@
 #include "CCoordinates.hpp"
 #include "CDFS.hpp"
 #include "CBFS.hpp"
+#include "CRandomSearch.hpp"
 
 CApplication::CApplication() {}
 
@@ -157,6 +158,7 @@ void CApplication::getAlgorithm() {
 
     switch (choice) {
         case 1:
+            m_Algorithm = std::make_shared<CRandomSearch>(m_Map);
             break;
         case 2:
             m_Algorithm = std::make_shared<CDFS>(m_Map);

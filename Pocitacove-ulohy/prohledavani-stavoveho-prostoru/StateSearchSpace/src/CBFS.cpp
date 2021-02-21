@@ -12,8 +12,8 @@ CBFS::CBFS(const std::shared_ptr<CMap> &mMap) : CAlgorithm(mMap) {
 }
 
 void CBFS::move() {
-    CCoordinates coords = m_Queue.front().first;
-    CCoordinates predecessorCords = m_Queue.front().second;
+    CCoordinates coords = m_Queue.front().m_Coords;
+    CCoordinates predecessorCords = m_Queue.front().m_Predecessor;
     m_Queue.pop();
 
     if (coords == m_Map->m_end) {

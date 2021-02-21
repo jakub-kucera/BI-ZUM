@@ -12,8 +12,8 @@ CDFS::CDFS(const std::shared_ptr<CMap> &mMap) : CAlgorithm(mMap) {
 }
 
 void CDFS::move() {
-    CCoordinates coords = m_Stack.top().first;
-    CCoordinates predecessorCoords = m_Stack.top().second;
+    CCoordinates coords = m_Stack.top().m_Coords;
+    CCoordinates predecessorCoords = m_Stack.top().m_Predecessor;
     m_Stack.pop();
 
     if (coords == m_Map->m_end) {
