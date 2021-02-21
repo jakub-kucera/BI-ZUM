@@ -44,7 +44,7 @@ public:
                         m_MapNum[r][c] = INT_MAX;
                         break;
                     default:
-                        throw std::runtime_error("Unknown character on map: " + std::to_string(m_MapNum[r][c]));
+                        throw std::runtime_error("Unknown character on map: " + std::to_string(m_MapChar[r][c]));
 
                 }
             }

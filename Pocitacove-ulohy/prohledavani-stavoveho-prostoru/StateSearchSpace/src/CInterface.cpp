@@ -12,8 +12,9 @@ void CInterface::paintMap() {
     clear();
 
     for(auto & line : m_Map->m_MapChar) {
-        std::cout << line << std::endl;
+        std::cout << line << '\n';
     }
+    std::cout.flush();
 }
 
 void CInterface::clear() {

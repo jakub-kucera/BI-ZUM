@@ -23,16 +23,29 @@ protected:
 
     CCoordinates getNextPathCoords(CCoordinates coords) {
         std::vector<CCoordinates> neighbors;
-        neighbors.emplace_back(CCoordinates(coords.m_X + 1, coords.m_Y));
-        neighbors.emplace_back(CCoordinates(coords.m_X - 1, coords.m_Y));
-        neighbors.emplace_back(CCoordinates(coords.m_X, coords.m_Y + 1));
+        std::cout << "Main coords distance: " <<  m_Map->m_MapNum[coords.m_Y][coords.m_X] << std::endl;
         neighbors.emplace_back(CCoordinates(coords.m_X, coords.m_Y - 1));
-        std::sort(neighbors.begin(), neighbors.end(), [&](const CCoordinates & a, const CCoordinates & b) -> bool
-        {
-            return m_Map->m_MapNum[b.m_Y][b.m_X] > m_Map->m_MapNum[a.m_Y][a.m_X];
+        neighbors.emplace_back(CCoordinates(coords.m_X, coords.m_Y + 1));
+        neighbors.emplace_back(CCoordinates(coords.m_X - 1, coords.m_Y));
+        neighbors.emplace_back(CCoordinates(coords.m_X + 1, coords.m_Y));
+        std::cout << "Neighbor coords distance: " <<  m_Map->m_MapNum[neighbors[0].m_Y][neighbors[0].m_X] << std::endl;
+        std::cout << "Neighbor coords distance: " <<  m_Map->m_MapNum[neighbors[1].m_Y][neighbors[1].m_X] << std::endl;
+        std::cout << "Neighbor coords distance: " <<  m_Map->m_MapNum[neighbors[2].m_Y][neighbors[2].m_X] << std::endl;
+        std::cout << "Neighbor coords distance: " <<  m_Map->m_MapNum[neighbors[3].m_Y][neighbors[3].m_X] << std::endl;
+        auto it = find_if(neighbors.begin(), neighbors.end(), [&] (const CCoordinates & a) -> bool {
+            return m_Map->m_MapNum[a.m_Y][a.m_X] == m_Map->m_MapNum[coords.m_Y][coords.m_X] - 1;
         });
+        std::cout << m_Map->m_MapNum[it->m_Y][it->m_X] << " == " << m_Map->m_MapNum[coords.m_Y][coords.m_X] << " - 1" << std::endl;
+        if(it == neighbors.end()) {
+            throw std::runtime_error("Predecessor not found, coords: X:" + std::to_string(coords.m_X) + " Y: " + std::to_string(coords.m_Y));
+        }
+        return *it;
+//        std::sort(neighbors.begin(), neighbors.end(), [&](const CCoordinates & a, const CCoordinates & b) -> bool
+//        {
+//            return m_Map->m_MapNum[b.m_Y][b.m_X] > m_Map->m_MapNum[a.m_Y][a.m_X];
+//        });
 
-        return neighbors[0];
+//        return neighbors[0];
     }
 public:
     explicit CAlgorithm(std::shared_ptr<CMap> mMap) : m_Map(std::move(mMap)), m_CurrentCoordsPath(mMap->m_end) {}
@@ -53,7 +66,7 @@ public:
             return;
         }
         m_Map->m_MapChar[m_CurrentCoordsPath.m_Y][m_CurrentCoordsPath.m_X] = 'o';
-        m_Map->m_MapNum[m_CurrentCoordsPath.m_Y][m_CurrentCoordsPath.m_X] = INT_MAX;
+//        m_Map->m_MapNum[m_CurrentCoordsPath.m_Y][m_CurrentCoordsPath.m_X] = INT_MAX;
 
         m_CurrentCoordsPath = getNextPathCoords(m_CurrentCoordsPath);
     }

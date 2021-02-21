@@ -18,6 +18,7 @@ void CBFS::move() {
 
     if (coords == m_Map->m_end) {
         m_FoundDestination = true;
+        m_Map->m_MapNum[coords.m_Y][coords.m_X]  = pathLength;
         return;
     }
 
