@@ -47,16 +47,15 @@ void CApplication::start() {
     }
 
     skippedFrames = 0;
-    int pathLength = 0;
     m_Algorithm->initPath();
     //creating path
     while(!m_Algorithm->foundStart()) {
         //move path
-        pathLength = m_Algorithm->movePath();
+        m_Algorithm->movePath();
 
         if(++skippedFrames > SKIP_FRAMES_CREATE_PATH && !SKIP_CREATE_PATH_DRAW){
             //show changes
-            m_Interface->paintMap(pathLength, PAINT_MAP_COLORED);
+            m_Interface->paintMap(PAINT_MAP_COLORED);
             //sleep
             usleep(TICK_SPEED);
 
@@ -64,7 +63,9 @@ void CApplication::start() {
         }
     }
 
-    m_Interface->paintMap(pathLength, PAINT_MAP_COLORED);
+//    m_Interface->paintMap(pathLength, PAINT_MAP_COLORED);
+    m_Interface->paintMap(PAINT_MAP_COLORED);
+    m_Interface->paintExplanations();
 
 }
 

@@ -7,6 +7,7 @@
 
 
 #include <memory>
+#include <unordered_map>
 #include "CMap.hpp"
 
 class CInterface {
@@ -21,9 +22,20 @@ public:
 
     void paintMapUnColored();
 
+    void paintExplanations();
+
 private:
     // Sequence of characters that clears the users terminal.
     const char * const CLEAR_COMMAND = "\x1B[2J\x1B[H";
+
+    const std::unordered_map<std::string, uint8_t> m_ColorTable = {{"black",   40},
+                                                                   {"red",     41},
+                                                                   {"green",   42},
+                                                                   {"yellow",  43},
+                                                                   {"blue",    44},
+                                                                   {"magenta", 45},
+                                                                   {"cyan",    46},
+                                                                   {"white",   47}};
 
     std::shared_ptr<CMap> m_Map;
 

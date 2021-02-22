@@ -21,8 +21,6 @@ protected:
 
     std::shared_ptr<CMap> m_Map;
 
-    int pathLength = 0;
-
 public:
     explicit CAlgorithm(std::shared_ptr<CMap> mMap);
 
@@ -32,7 +30,7 @@ public:
 
     void initPath();
 
-    int movePath();
+    void movePath();
 
     bool foundStart() const;
 };

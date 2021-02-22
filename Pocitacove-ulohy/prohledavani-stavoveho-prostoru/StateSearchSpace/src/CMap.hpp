@@ -18,6 +18,8 @@ public:
     std::vector<std::vector<CCoordinates>> m_MapPred;
     CCoordinates m_Start;
     CCoordinates m_end;
+    int pathLength = 0;
+    int nodesExpanded = 0;
 
     CMap(std::vector<std::string> mMap, const CCoordinates &mStart, const CCoordinates &mEnd)
         : m_MapChar(std::move(mMap)), m_Start(mStart), m_end(mEnd) {
@@ -26,8 +28,6 @@ public:
         for (auto & row : m_MapPred) {
             row.resize(rowLength);
         }
-
-        //r, c
 
         CCoordinates empty(-1,-1);
 

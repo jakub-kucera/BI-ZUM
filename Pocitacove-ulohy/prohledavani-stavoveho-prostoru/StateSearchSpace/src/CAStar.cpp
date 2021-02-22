@@ -38,6 +38,8 @@ void CAStar::move() {
         return;
     }
 
+    m_Map->nodesExpanded++;
+
     //neighbors
     std::list<CCoordinates> neighbors;
     neighbors.emplace_back(CCoordinates(coords.m_X + 1, coords.m_Y));

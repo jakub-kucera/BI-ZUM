@@ -28,6 +28,7 @@ private:
 
     const int SKIP_FRAMES_CREATE_PATH = 0;
 
+    //slower rendering if enabled
     const bool PAINT_MAP_COLORED = false;
 
     std::shared_ptr<CAlgorithm> m_Algorithm;
@@ -40,7 +41,7 @@ private:
 
     std::string getMapFileName();
 
-    void getMap(const std::string& mapFileName);
+    void getMap(const std::string &mapFileName);
 
     void getAlgorithm();
 

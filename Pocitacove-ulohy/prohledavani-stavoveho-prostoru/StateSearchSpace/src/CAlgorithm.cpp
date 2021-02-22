@@ -14,15 +14,15 @@ void CAlgorithm::initPath() {
     m_CurrentCoordsPath = m_Map->m_MapPred[m_Map->m_end.m_Y][m_Map->m_end.m_X];
 }
 
-int CAlgorithm::movePath() {
+void CAlgorithm::movePath() {
+    m_Map->pathLength++;
     if(m_CurrentCoordsPath == m_Map->m_Start) {
         m_FoundStart = true;
-        return pathLength;
+        return;
     }
     m_Map->m_MapChar[m_CurrentCoordsPath.m_Y][m_CurrentCoordsPath.m_X] = 'o';
 
     m_CurrentCoordsPath = m_Map->m_MapPred[m_CurrentCoordsPath.m_Y][m_CurrentCoordsPath.m_X];
-    return ++pathLength;
 
 }
 
