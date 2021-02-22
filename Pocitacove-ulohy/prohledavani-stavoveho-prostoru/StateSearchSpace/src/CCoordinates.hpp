@@ -9,13 +9,12 @@
 
 /// Used to store coordinates.
 struct CCoordinates {
-    /// @var X coordinate.
+    /// X coordinate.
     unsigned int m_X;
-    /// @var Y coordinate.
+    ///  coordinate.
     unsigned int m_Y;
 
     CCoordinates() : m_X(0), m_Y(0) {}
-
 
     CCoordinates(unsigned int x, unsigned int y) : m_X(x), m_Y(y) {}
 

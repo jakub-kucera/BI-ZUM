@@ -16,7 +16,7 @@ void CAlgorithm::initPath() {
 
 void CAlgorithm::movePath() {
     m_Map->pathLength++;
-    if(m_CurrentCoordsPath == m_Map->m_Start) {
+    if (m_CurrentCoordsPath == m_Map->m_Start) {
         m_FoundStart = true;
         return;
     }

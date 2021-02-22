@@ -18,12 +18,10 @@ private:
 
     const int TICK_SPEED = 10 * 1000;
 
-//    const bool SKIP_SEARCH_DRAW = true;
     const bool SKIP_SEARCH_DRAW = false;
 
     const int SKIP_FRAMES_SEARCH_DESTINATION = 0;
 
-//    const bool SKIP_CREATE_PATH_DRAW = true;
     const bool SKIP_CREATE_PATH_DRAW = false;
 
     const int SKIP_FRAMES_CREATE_PATH = 0;

@@ -27,7 +27,6 @@ void CInterface::paintMapColored() {
     for (const auto &line : m_Map->m_MapChar) {
         for (char c : line) {
             std::cout << "\033[1;";
-//            std::cout << "\033[1;42mc\033[0m;
             switch (c) {
                 case 'X':
                     std::cout << std::to_string(m_ColorTable.find("yellow")->second);

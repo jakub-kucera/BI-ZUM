@@ -14,11 +14,9 @@
 #include "CGreedySearch.hpp"
 #include "CAStar.hpp"
 
-CApplication::CApplication() {}
+CApplication::CApplication() = default;
 
-CApplication::~CApplication() {
-
-}
+CApplication::~CApplication() = default;
 
 void CApplication::start() {
     //get map file name
@@ -32,11 +30,11 @@ void CApplication::start() {
 
     int skippedFrames = 0;
     //searching for destination
-    while(!m_Algorithm->foundDestination()) {
+    while (!m_Algorithm->foundDestination()) {
         //run algorithm step
         m_Algorithm->move();
 
-        if(++skippedFrames > SKIP_FRAMES_SEARCH_DESTINATION && !SKIP_SEARCH_DRAW){
+        if (++skippedFrames > SKIP_FRAMES_SEARCH_DESTINATION && !SKIP_SEARCH_DRAW) {
             //show changes
             m_Interface->paintMap(PAINT_MAP_COLORED);
             //sleep
@@ -49,11 +47,11 @@ void CApplication::start() {
     skippedFrames = 0;
     m_Algorithm->initPath();
     //creating path
-    while(!m_Algorithm->foundStart()) {
+    while (!m_Algorithm->foundStart()) {
         //move path
         m_Algorithm->movePath();
 
-        if(++skippedFrames > SKIP_FRAMES_CREATE_PATH && !SKIP_CREATE_PATH_DRAW){
+        if (++skippedFrames > SKIP_FRAMES_CREATE_PATH && !SKIP_CREATE_PATH_DRAW) {
             //show changes
             m_Interface->paintMap(PAINT_MAP_COLORED);
             //sleep
@@ -94,11 +92,10 @@ std::string CApplication::getMapFileName() {
         inputStream.close();
     }
 
-
     return mapFileName;
 }
 
-void CApplication::getMap(const std::string& mapFileName) {
+void CApplication::getMap(const std::string &mapFileName) {
     std::string line;
     std::vector<std::string> map;
     CCoordinates start;

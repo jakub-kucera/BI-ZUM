@@ -11,13 +11,13 @@
 class CAStar : public CGreedySearch {
 private:
     std::vector<std::vector<int>> m_DistanceFromStart;
-//    std::map<CCoordinates, int> m_DistanceFromStartMap;
+
     std::map<CCoordinates, bool> m_ClosedMap;
-//    std::multimap<double, CCoordinates> m_PriorityMap;
 
     void removeFromPriorityMap(CCoordinates);
 
     bool isOpenedClosed(CCoordinates coords);
+
 public:
     CAStar(const std::shared_ptr<CMap> &mMap);
 

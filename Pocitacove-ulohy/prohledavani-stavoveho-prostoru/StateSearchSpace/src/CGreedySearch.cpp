@@ -13,7 +13,7 @@ CGreedySearch::CGreedySearch(const std::shared_ptr<CMap> &mMap) : CAlgorithm(mMa
 }
 
 void CGreedySearch::move() {
-    const auto & it = m_PriorityMap.begin();
+    const auto &it = m_PriorityMap.begin();
     CCoordinates coords = it->second;
     m_PriorityMap.erase(it);
 
@@ -31,17 +31,16 @@ void CGreedySearch::move() {
     neighbors.emplace_back(CCoordinates(coords.m_X, coords.m_Y + 1));
     neighbors.emplace_back(CCoordinates(coords.m_X, coords.m_Y - 1));
 
-    for(const auto & neighbor : neighbors) {
+    for (const auto &neighbor : neighbors) {
         char neighborChar = m_Map->m_MapChar[neighbor.m_Y][neighbor.m_X];
 
-        if(neighborChar== ' ') {
+        if (neighborChar == ' ') {
             m_PriorityMap.emplace(getDistanceToDestination(neighbor), neighbor);
             m_Map->m_MapChar[neighbor.m_Y][neighbor.m_X] = '#';
-            m_Map->m_MapPred[neighbor.m_Y][neighbor.m_X]  = coords;
-        }
-        else if(neighborChar == 'E') {
+            m_Map->m_MapPred[neighbor.m_Y][neighbor.m_X] = coords;
+        } else if (neighborChar == 'E') {
             m_PriorityMap.emplace(getDistanceToDestination(neighbor), neighbor);
-            m_Map->m_MapPred[neighbor.m_Y][neighbor.m_X]  = coords;
+            m_Map->m_MapPred[neighbor.m_Y][neighbor.m_X] = coords;
         }
     }
 }
@@ -52,7 +51,7 @@ double CGreedySearch::getDistanceToDestination(CCoordinates a) {
 
 double CGreedySearch::getDistanceToDestinationMem(CCoordinates a) {
     auto it = m_DistancesMap.find(a);
-    if(it == m_DistancesMap.end()) {
+    if (it == m_DistancesMap.end()) {
         double distance = getDistance(a, m_Map->m_end);
         m_DistancesMap[a] = distance;
         return distance;
@@ -61,5 +60,5 @@ double CGreedySearch::getDistanceToDestinationMem(CCoordinates a) {
 }
 
 double CGreedySearch::getDistance(CCoordinates a, CCoordinates b) {
-    return sqrt((b.m_X - a.m_X)*(b.m_X - a.m_X) + (b.m_Y - a.m_Y)*(b.m_Y - a.m_Y));
+    return sqrt((b.m_X - a.m_X) * (b.m_X - a.m_X) + (b.m_Y - a.m_Y) * (b.m_Y - a.m_Y));
 }

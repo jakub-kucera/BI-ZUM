@@ -11,7 +11,7 @@
 #include <algorithm>
 #include "CMap.hpp"
 
-class CAlgorithm {// todo create .cpp
+class CAlgorithm {
 protected:
     bool m_FoundDestination = false;
 

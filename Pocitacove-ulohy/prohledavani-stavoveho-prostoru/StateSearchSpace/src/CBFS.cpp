@@ -28,16 +28,15 @@ void CBFS::move() {
     neighbors.emplace_back(CCoordinates(coords.m_X, coords.m_Y + 1));
     neighbors.emplace_back(CCoordinates(coords.m_X, coords.m_Y - 1));
 
-    for(const auto & neighbor : neighbors) {
+    for (const auto &neighbor : neighbors) {
         char neighborChar = m_Map->m_MapChar[neighbor.m_Y][neighbor.m_X];
-        if(neighborChar == ' ') {
+        if (neighborChar == ' ') {
             m_Queue.emplace(neighbor);
-            m_Map->m_MapPred[neighbor.m_Y][neighbor.m_X]  = coords;
+            m_Map->m_MapPred[neighbor.m_Y][neighbor.m_X] = coords;
             m_Map->m_MapChar[neighbor.m_Y][neighbor.m_X] = '#';
-        }
-        else if(neighborChar == 'E') {
+        } else if (neighborChar == 'E') {
             m_Queue.emplace(neighbor);
-            m_Map->m_MapPred[neighbor.m_Y][neighbor.m_X]  = coords;
+            m_Map->m_MapPred[neighbor.m_Y][neighbor.m_X] = coords;
         }
     }
 }

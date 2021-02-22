@@ -26,7 +26,7 @@ public:
 
 private:
     // Sequence of characters that clears the users terminal.
-    const char * const CLEAR_COMMAND = "\x1B[2J\x1B[H";
+    const char *const CLEAR_COMMAND = "\x1B[2J\x1B[H";
 
     const std::unordered_map<std::string, uint8_t> m_ColorTable = {{"black",   40},
                                                                    {"red",     41},

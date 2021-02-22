@@ -8,7 +8,6 @@
 
 #include <map>
 #include "CAlgorithm.hpp"
-#include "CCoordinatesPair.hpp"
 
 class CGreedySearch : public CAlgorithm {
 protected:
@@ -21,6 +20,7 @@ protected:
     double getDistanceToDestinationMem(CCoordinates a);
 
     static double getDistance(CCoordinates a, CCoordinates b);
+
 public:
     explicit CGreedySearch(const std::shared_ptr<CMap> &mMap);
 

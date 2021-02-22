@@ -14,7 +14,6 @@
 class CMap {
 public:
     std::vector<std::string> m_MapChar;
-//    std::vector<std::vector<int>> m_MapNum;
     std::vector<std::vector<CCoordinates>> m_MapPred;
     CCoordinates m_Start;
     CCoordinates m_end;
@@ -22,16 +21,16 @@ public:
     int nodesExpanded = 0;
 
     CMap(std::vector<std::string> mMap, const CCoordinates &mStart, const CCoordinates &mEnd)
-        : m_MapChar(std::move(mMap)), m_Start(mStart), m_end(mEnd) {
+            : m_MapChar(std::move(mMap)), m_Start(mStart), m_end(mEnd) {
         m_MapPred.resize(m_MapChar.size());
         int rowLength = m_MapChar[0].size();
-        for (auto & row : m_MapPred) {
+        for (auto &row : m_MapPred) {
             row.resize(rowLength);
         }
 
-        CCoordinates empty(-1,-1);
+        CCoordinates empty(-1, -1);
 
-        for(int y = 0; y < m_MapChar.size(); y++) {
+        for (int y = 0; y < m_MapChar.size(); y++) {
             for (int x = 0; x < m_MapChar[0].size(); x++) {
                 switch (m_MapChar[y][x]) {
                     case ' ':

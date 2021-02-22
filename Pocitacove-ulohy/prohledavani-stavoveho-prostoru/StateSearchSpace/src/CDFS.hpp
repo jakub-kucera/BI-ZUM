@@ -8,7 +8,6 @@
 
 #include <stack>
 #include "CAlgorithm.hpp"
-#include "CCoordinatesPair.hpp"
 
 class CDFS : public CAlgorithm {
 private:

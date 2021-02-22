@@ -7,19 +7,16 @@
 
 #include <set>
 #include "CAlgorithm.hpp"
-#include "CCoordinatesPair.hpp"
 
 
 class CRandomSearch : public CAlgorithm {
 private:
     std::set<CCoordinates> m_Set;
 
-
 public:
     explicit CRandomSearch(const std::shared_ptr<CMap> &mMap);
 
     virtual void move() override;
-
 };
 
 
