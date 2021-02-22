@@ -2,38 +2,40 @@
 // Created by kucerj56 on 21.02.21.
 //
 
+#include <list>
 #include "CBFS.hpp"
 
 CBFS::CBFS(const std::shared_ptr<CMap> &mMap) : CAlgorithm(mMap) {
-//    m_Queue.emplace(mMap->m_Start, mMap->m_Start); //todo change
-    m_Queue.emplace(CCoordinates(m_Map->m_Start.m_X + 1, m_Map->m_Start.m_Y), mMap->m_Start);
-    m_Queue.emplace(CCoordinates(m_Map->m_Start.m_X - 1, m_Map->m_Start.m_Y), mMap->m_Start);
-    m_Queue.emplace(CCoordinates(m_Map->m_Start.m_X, m_Map->m_Start.m_Y + 1), mMap->m_Start);
-    m_Queue.emplace(CCoordinates(m_Map->m_Start.m_X, m_Map->m_Start.m_Y - 1), mMap->m_Start);
+    m_Queue.emplace(m_Map->m_Start);
+    m_Map->m_MapPred[m_Map->m_Start.m_Y][m_Map->m_Start.m_X] = m_Map->m_Start;
 }
 
 void CBFS::move() {
-    CCoordinates coords = m_Queue.front().m_Coords;
-    CCoordinates predecessorCords = m_Queue.front().m_Predecessor;
+    CCoordinates coords = m_Queue.front();
     m_Queue.pop();
 
     if (coords == m_Map->m_end) {
         m_FoundDestination = true;
-        m_Map->m_MapPred[coords.m_Y][coords.m_X]  = predecessorCords;
         return;
     }
-
-    if(m_Map->m_MapChar[coords.m_Y][coords.m_X] != ' ') {
-        return;
-    }
-
-    m_Map->m_MapChar[coords.m_Y][coords.m_X] = '#'; //todo change # to opened instead of closed
-    m_Map->m_MapPred[coords.m_Y][coords.m_X]  = predecessorCords;
-
 
     //neighbors
-    m_Queue.emplace(CCoordinates(coords.m_X + 1, coords.m_Y), coords);
-    m_Queue.emplace(CCoordinates(coords.m_X - 1, coords.m_Y), coords);
-    m_Queue.emplace(CCoordinates(coords.m_X, coords.m_Y + 1), coords);
-    m_Queue.emplace(CCoordinates(coords.m_X, coords.m_Y - 1), coords);
+    std::list<CCoordinates> neighbors;
+    neighbors.emplace_back(CCoordinates(coords.m_X + 1, coords.m_Y));
+    neighbors.emplace_back(CCoordinates(coords.m_X - 1, coords.m_Y));
+    neighbors.emplace_back(CCoordinates(coords.m_X, coords.m_Y + 1));
+    neighbors.emplace_back(CCoordinates(coords.m_X, coords.m_Y - 1));
+
+    for(const auto & neighbor : neighbors) {
+        char neighborChar = m_Map->m_MapChar[neighbor.m_Y][neighbor.m_X];
+        if(neighborChar == ' ') {
+            m_Queue.emplace(neighbor);
+            m_Map->m_MapPred[neighbor.m_Y][neighbor.m_X]  = coords;
+            m_Map->m_MapChar[neighbor.m_Y][neighbor.m_X] = '#';
+        }
+        else if(neighborChar == 'E') {
+            m_Queue.emplace(neighbor);
+            m_Map->m_MapPred[neighbor.m_Y][neighbor.m_X]  = coords;
+        }
+    }
 }

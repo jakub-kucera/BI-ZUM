@@ -12,8 +12,7 @@
 
 class CDFS : public CAlgorithm {
 private:
-    //current coordinates, predecessors coordinates
-    std::stack<CCoordinatesPair> m_Stack;
+    std::stack<CCoordinates> m_Stack;
 public:
     explicit CDFS(const std::shared_ptr<CMap> &mMap);
 

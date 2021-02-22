@@ -12,11 +12,9 @@
 
 class CBFS : public CAlgorithm {
 private:
-    //current coordinates, predecessors coordinates
-    std::queue<CCoordinatesPair> m_Queue;
+    std::queue<CCoordinates> m_Queue;
 public:
     explicit CBFS(const std::shared_ptr<CMap> &mMap);
-
     virtual void move() override;
 };
 

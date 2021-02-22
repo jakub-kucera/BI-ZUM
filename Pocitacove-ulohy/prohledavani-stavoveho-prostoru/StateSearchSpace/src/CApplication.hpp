@@ -16,7 +16,7 @@ private:
 
     const char *const MAP_FILE = "../examples/";
 
-    const int TICK_SPEED = 100 * 1000;
+    const int TICK_SPEED = 10 * 1000;
 
 //    const bool SKIP_SEARCH_DRAW = true;
     const bool SKIP_SEARCH_DRAW = false;

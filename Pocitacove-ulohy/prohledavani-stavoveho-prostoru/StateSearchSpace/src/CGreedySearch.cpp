@@ -9,12 +9,18 @@
 
 CGreedySearch::CGreedySearch(const std::shared_ptr<CMap> &mMap) : CAlgorithm(mMap) {
     m_PriorityMap.emplace(getDistanceToDestination(m_Map->m_Start), m_Map->m_Start);
+    m_Map->m_MapPred[m_Map->m_Start.m_Y][m_Map->m_Start.m_X] = m_Map->m_Start;
 }
 
 void CGreedySearch::move() {
     const auto & it = m_PriorityMap.begin();
     CCoordinates coords = it->second;
     m_PriorityMap.erase(it);
+
+    if (coords == m_Map->m_end) {
+        m_FoundDestination = true;
+        return;
+    }
 
     //neighbors
     std::list<CCoordinates> neighbors;
@@ -23,30 +29,19 @@ void CGreedySearch::move() {
     neighbors.emplace_back(CCoordinates(coords.m_X, coords.m_Y + 1));
     neighbors.emplace_back(CCoordinates(coords.m_X, coords.m_Y - 1));
 
-    std::cout << "main distance: " << getDistanceToDestination(coords) << std::endl;
     for(const auto & neighbor : neighbors) {
-        if (neighbor == m_Map->m_end) {
-            m_FoundDestination = true;
-            m_Map->m_MapPred[neighbor.m_Y][neighbor.m_X]  = coords;
-            return;
-        }
+        char neighborChar = m_Map->m_MapChar[neighbor.m_Y][neighbor.m_X];
 
-        if(m_Map->m_MapChar[neighbor.m_Y][neighbor.m_X] == ' ') {
+        if(neighborChar== ' ') {
             m_PriorityMap.emplace(getDistanceToDestination(neighbor), neighbor);
-            std::cout << "neighbor distance: " << getDistanceToDestination(neighbor) << std::endl;
-            m_Map->m_MapChar[coords.m_Y][coords.m_X] = '#';
+            m_Map->m_MapChar[neighbor.m_Y][neighbor.m_X] = '#';
+            m_Map->m_MapPred[neighbor.m_Y][neighbor.m_X]  = coords;
+        }
+        else if(neighborChar == 'E') {
+            m_PriorityMap.emplace(getDistanceToDestination(neighbor), neighbor);
             m_Map->m_MapPred[neighbor.m_Y][neighbor.m_X]  = coords;
         }
     }
-
-
-//    if(m_Map->m_MapChar[coords.m_Y][coords.m_X] != ' ') {
-//        return;
-//    }
-//
-//    m_Map->m_MapChar[coords.m_Y][coords.m_X] = '#';
-//    m_Map->m_MapPred[coords.m_Y][coords.m_X]  = predecessorCords;
-
 }
 
 double CGreedySearch::getDistanceToDestination(CCoordinates a) {

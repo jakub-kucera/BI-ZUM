@@ -12,9 +12,7 @@
 
 class CRandomSearch : public CAlgorithm {
 private:
-    //current coordinates, predecessors coordinates
-
-    std::set<CCoordinatesPair> m_Set;
+    std::set<CCoordinates> m_Set;
 
 
 public:
