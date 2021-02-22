@@ -11,9 +11,10 @@
 #include "CCoordinatesPair.hpp"
 
 class CGreedySearch : public CAlgorithm {
-private:
+protected:
     std::multimap<double, CCoordinates> m_PriorityMap;
-    std::map<CCoordinates, double> m_DistancesMap;
+
+    std::map<CCoordinates, double> m_DistancesMap; //not used
 
     double getDistanceToDestination(CCoordinates a);
 

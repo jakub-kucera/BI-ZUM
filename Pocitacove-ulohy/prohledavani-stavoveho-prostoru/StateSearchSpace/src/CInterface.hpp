@@ -13,7 +13,13 @@ class CInterface {
 public:
     explicit CInterface(std::shared_ptr<CMap> mMap);
 
-    void paintMap();
+    void paintMap(int pathLength, bool colored);
+
+    void paintMap(bool colored);
+
+    void paintMapColored();
+
+    void paintMapUnColored();
 
 private:
     // Sequence of characters that clears the users terminal.

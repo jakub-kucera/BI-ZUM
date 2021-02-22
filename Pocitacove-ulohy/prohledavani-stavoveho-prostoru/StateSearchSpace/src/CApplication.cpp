@@ -12,6 +12,7 @@
 #include "CBFS.hpp"
 #include "CRandomSearch.hpp"
 #include "CGreedySearch.hpp"
+#include "CAStar.hpp"
 
 CApplication::CApplication() {}
 
@@ -26,7 +27,7 @@ void CApplication::start() {
     //chose algorithm
     getAlgorithm();
 
-    paintMap();
+    m_Interface->paintMap(PAINT_MAP_COLORED);
 
 
     int skippedFrames = 0;
@@ -37,7 +38,7 @@ void CApplication::start() {
 
         if(++skippedFrames > SKIP_FRAMES_SEARCH_DESTINATION && !SKIP_SEARCH_DRAW){
             //show changes
-            paintMap();
+            m_Interface->paintMap(PAINT_MAP_COLORED);
             //sleep
             usleep(TICK_SPEED);
 
@@ -46,15 +47,16 @@ void CApplication::start() {
     }
 
     skippedFrames = 0;
+    int pathLength = 0;
     m_Algorithm->initPath();
     //creating path
     while(!m_Algorithm->foundStart()) {
         //move path
-        m_Algorithm->movePath();
+        pathLength = m_Algorithm->movePath();
 
         if(++skippedFrames > SKIP_FRAMES_CREATE_PATH && !SKIP_CREATE_PATH_DRAW){
             //show changes
-            paintMap();
+            m_Interface->paintMap(pathLength, PAINT_MAP_COLORED);
             //sleep
             usleep(TICK_SPEED);
 
@@ -62,7 +64,7 @@ void CApplication::start() {
         }
     }
 
-    paintMap();
+    m_Interface->paintMap(pathLength, PAINT_MAP_COLORED);
 
 }
 
@@ -132,9 +134,6 @@ void CApplication::getMap(const std::string& mapFileName) {
     m_Interface = std::make_shared<CInterface>(m_Map);
 }
 
-void CApplication::paintMap() {
-    m_Interface->paintMap();
-}
 
 void CApplication::getAlgorithm() {
     bool invalidInput = true;
@@ -171,6 +170,7 @@ void CApplication::getAlgorithm() {
             m_Algorithm = std::make_shared<CGreedySearch>(m_Map);
             break;
         case 5:
+            m_Algorithm = std::make_shared<CAStar>(m_Map);
             break;
         default:
             throw std::runtime_error("Incorrect algorithm id");

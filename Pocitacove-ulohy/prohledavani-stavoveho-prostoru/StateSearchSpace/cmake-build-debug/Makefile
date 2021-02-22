@@ -143,6 +143,60 @@ StateSearchSpace/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/StateSearchSpace.dir/build.make CMakeFiles/StateSearchSpace.dir/build
 .PHONY : StateSearchSpace/fast
 
+src/CAStar.o: src/CAStar.cpp.o
+
+.PHONY : src/CAStar.o
+
+# target to build an object file
+src/CAStar.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StateSearchSpace.dir/build.make CMakeFiles/StateSearchSpace.dir/src/CAStar.cpp.o
+.PHONY : src/CAStar.cpp.o
+
+src/CAStar.i: src/CAStar.cpp.i
+
+.PHONY : src/CAStar.i
+
+# target to preprocess a source file
+src/CAStar.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StateSearchSpace.dir/build.make CMakeFiles/StateSearchSpace.dir/src/CAStar.cpp.i
+.PHONY : src/CAStar.cpp.i
+
+src/CAStar.s: src/CAStar.cpp.s
+
+.PHONY : src/CAStar.s
+
+# target to generate assembly for a file
+src/CAStar.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StateSearchSpace.dir/build.make CMakeFiles/StateSearchSpace.dir/src/CAStar.cpp.s
+.PHONY : src/CAStar.cpp.s
+
+src/CAlgorithm.o: src/CAlgorithm.cpp.o
+
+.PHONY : src/CAlgorithm.o
+
+# target to build an object file
+src/CAlgorithm.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StateSearchSpace.dir/build.make CMakeFiles/StateSearchSpace.dir/src/CAlgorithm.cpp.o
+.PHONY : src/CAlgorithm.cpp.o
+
+src/CAlgorithm.i: src/CAlgorithm.cpp.i
+
+.PHONY : src/CAlgorithm.i
+
+# target to preprocess a source file
+src/CAlgorithm.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StateSearchSpace.dir/build.make CMakeFiles/StateSearchSpace.dir/src/CAlgorithm.cpp.i
+.PHONY : src/CAlgorithm.cpp.i
+
+src/CAlgorithm.s: src/CAlgorithm.cpp.s
+
+.PHONY : src/CAlgorithm.s
+
+# target to generate assembly for a file
+src/CAlgorithm.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/StateSearchSpace.dir/build.make CMakeFiles/StateSearchSpace.dir/src/CAlgorithm.cpp.s
+.PHONY : src/CAlgorithm.cpp.s
+
 src/CApplication.o: src/CApplication.cpp.o
 
 .PHONY : src/CApplication.o
@@ -341,6 +395,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... StateSearchSpace"
+	@echo "... src/CAStar.o"
+	@echo "... src/CAStar.i"
+	@echo "... src/CAStar.s"
+	@echo "... src/CAlgorithm.o"
+	@echo "... src/CAlgorithm.i"
+	@echo "... src/CAlgorithm.s"
 	@echo "... src/CApplication.o"
 	@echo "... src/CApplication.i"
 	@echo "... src/CApplication.s"

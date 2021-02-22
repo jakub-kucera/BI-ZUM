@@ -28,6 +28,8 @@ private:
 
     const int SKIP_FRAMES_CREATE_PATH = 0;
 
+    const bool PAINT_MAP_COLORED = false;
+
     std::shared_ptr<CAlgorithm> m_Algorithm;
 
     std::shared_ptr<CMap> m_Map;
@@ -39,8 +41,6 @@ private:
     std::string getMapFileName();
 
     void getMap(const std::string& mapFileName);
-
-    void paintMap();
 
     void getAlgorithm();
 

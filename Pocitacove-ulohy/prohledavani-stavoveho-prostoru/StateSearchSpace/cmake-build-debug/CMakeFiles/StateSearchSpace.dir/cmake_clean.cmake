@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/StateSearchSpace.dir/src/CAStar.cpp.o"
+  "CMakeFiles/StateSearchSpace.dir/src/CAlgorithm.cpp.o"
   "CMakeFiles/StateSearchSpace.dir/src/CApplication.cpp.o"
   "CMakeFiles/StateSearchSpace.dir/src/CBFS.cpp.o"
   "CMakeFiles/StateSearchSpace.dir/src/CDFS.cpp.o"

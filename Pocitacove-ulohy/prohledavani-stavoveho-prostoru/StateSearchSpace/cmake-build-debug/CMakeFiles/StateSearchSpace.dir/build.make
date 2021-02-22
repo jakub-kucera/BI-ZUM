@@ -168,6 +168,32 @@ CMakeFiles/StateSearchSpace.dir/src/CGreedySearch.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/StateSearchSpace.dir/src/CGreedySearch.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CGreedySearch.cpp -o CMakeFiles/StateSearchSpace.dir/src/CGreedySearch.cpp.s
 
+CMakeFiles/StateSearchSpace.dir/src/CAStar.cpp.o: CMakeFiles/StateSearchSpace.dir/flags.make
+CMakeFiles/StateSearchSpace.dir/src/CAStar.cpp.o: ../src/CAStar.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/StateSearchSpace.dir/src/CAStar.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/StateSearchSpace.dir/src/CAStar.cpp.o -c /home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CAStar.cpp
+
+CMakeFiles/StateSearchSpace.dir/src/CAStar.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/StateSearchSpace.dir/src/CAStar.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CAStar.cpp > CMakeFiles/StateSearchSpace.dir/src/CAStar.cpp.i
+
+CMakeFiles/StateSearchSpace.dir/src/CAStar.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/StateSearchSpace.dir/src/CAStar.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CAStar.cpp -o CMakeFiles/StateSearchSpace.dir/src/CAStar.cpp.s
+
+CMakeFiles/StateSearchSpace.dir/src/CAlgorithm.cpp.o: CMakeFiles/StateSearchSpace.dir/flags.make
+CMakeFiles/StateSearchSpace.dir/src/CAlgorithm.cpp.o: ../src/CAlgorithm.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/StateSearchSpace.dir/src/CAlgorithm.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/StateSearchSpace.dir/src/CAlgorithm.cpp.o -c /home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CAlgorithm.cpp
+
+CMakeFiles/StateSearchSpace.dir/src/CAlgorithm.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/StateSearchSpace.dir/src/CAlgorithm.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CAlgorithm.cpp > CMakeFiles/StateSearchSpace.dir/src/CAlgorithm.cpp.i
+
+CMakeFiles/StateSearchSpace.dir/src/CAlgorithm.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/StateSearchSpace.dir/src/CAlgorithm.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/src/CAlgorithm.cpp -o CMakeFiles/StateSearchSpace.dir/src/CAlgorithm.cpp.s
+
 # Object files for target StateSearchSpace
 StateSearchSpace_OBJECTS = \
 "CMakeFiles/StateSearchSpace.dir/src/main.cpp.o" \
@@ -176,7 +202,9 @@ StateSearchSpace_OBJECTS = \
 "CMakeFiles/StateSearchSpace.dir/src/CDFS.cpp.o" \
 "CMakeFiles/StateSearchSpace.dir/src/CBFS.cpp.o" \
 "CMakeFiles/StateSearchSpace.dir/src/CRandomSearch.cpp.o" \
-"CMakeFiles/StateSearchSpace.dir/src/CGreedySearch.cpp.o"
+"CMakeFiles/StateSearchSpace.dir/src/CGreedySearch.cpp.o" \
+"CMakeFiles/StateSearchSpace.dir/src/CAStar.cpp.o" \
+"CMakeFiles/StateSearchSpace.dir/src/CAlgorithm.cpp.o"
 
 # External object files for target StateSearchSpace
 StateSearchSpace_EXTERNAL_OBJECTS =
@@ -188,9 +216,11 @@ StateSearchSpace: CMakeFiles/StateSearchSpace.dir/src/CDFS.cpp.o
 StateSearchSpace: CMakeFiles/StateSearchSpace.dir/src/CBFS.cpp.o
 StateSearchSpace: CMakeFiles/StateSearchSpace.dir/src/CRandomSearch.cpp.o
 StateSearchSpace: CMakeFiles/StateSearchSpace.dir/src/CGreedySearch.cpp.o
+StateSearchSpace: CMakeFiles/StateSearchSpace.dir/src/CAStar.cpp.o
+StateSearchSpace: CMakeFiles/StateSearchSpace.dir/src/CAlgorithm.cpp.o
 StateSearchSpace: CMakeFiles/StateSearchSpace.dir/build.make
 StateSearchSpace: CMakeFiles/StateSearchSpace.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable StateSearchSpace"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable StateSearchSpace"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/StateSearchSpace.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
