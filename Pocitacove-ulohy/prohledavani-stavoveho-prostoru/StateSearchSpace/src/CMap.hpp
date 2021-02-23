@@ -30,8 +30,8 @@ public:
 
         CCoordinates empty(-1, -1);
 
-        for (int y = 0; y < m_MapChar.size(); y++) {
-            for (int x = 0; x < m_MapChar[0].size(); x++) {
+        for (long unsigned int y = 0; y < m_MapChar.size(); y++) {
+            for (long unsigned int x = 0; x < m_MapChar[0].size(); x++) {
                 switch (m_MapChar[y][x]) {
                     case ' ':
                         m_MapPred[y][x] = empty;

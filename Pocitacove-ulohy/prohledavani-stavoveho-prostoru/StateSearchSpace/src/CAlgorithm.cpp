@@ -8,7 +8,7 @@ CAlgorithm::CAlgorithm(std::shared_ptr<CMap> mMap) : m_Map(std::move(mMap)), m_C
 
 bool CAlgorithm::foundDestination() const {
     return m_FoundDestination;
-};
+}
 
 void CAlgorithm::initPath() {
     m_CurrentCoordsPath = m_Map->m_MapPred[m_Map->m_end.m_Y][m_Map->m_end.m_X];
@@ -28,4 +28,4 @@ void CAlgorithm::movePath() {
 
 bool CAlgorithm::foundStart() const {
     return m_FoundStart;
-};
+}

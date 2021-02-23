@@ -14,7 +14,8 @@
 class CApplication {
 private:
 
-    const char *const MAP_FILE = "../examples/";
+    const char *const MAP_FILE = "examples/";
+//    const char *const MAP_FILE = "../examples/";
 
     const int TICK_SPEED = 10 * 1000;
 
