@@ -1,3 +1,0 @@
-/home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace/cmake-build-debug/CMakeFiles/StateSearchSpace.dir
