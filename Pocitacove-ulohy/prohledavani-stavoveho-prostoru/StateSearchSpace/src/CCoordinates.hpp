@@ -33,6 +33,10 @@ struct CCoordinates {
             return false;
         return m_Y < rhs.m_Y;
     }
+
+    bool operator!=(const CCoordinates &rhs) const {
+        return !(rhs == *this);
+    }
 };
 
 

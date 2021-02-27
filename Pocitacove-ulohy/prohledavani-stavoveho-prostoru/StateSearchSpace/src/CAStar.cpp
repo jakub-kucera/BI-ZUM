@@ -31,6 +31,10 @@ void CAStar::move() {
         return;
     }
 
+    if (coords != m_Map->m_Start) {
+        m_Map->m_MapChar[coords.m_Y][coords.m_X] = '@';
+    }
+
     m_Map->nodesExpanded++;
 
     //neighbors
@@ -79,5 +83,6 @@ void CAStar::removeFromPriorityMap(CCoordinates coords) {
 bool CAStar::isOpenedClosed(CCoordinates coords) {
     return !(m_Map->m_MapPred[coords.m_Y][coords.m_X] == CCoordinates(-1, -1))
            && (m_Map->m_MapChar[coords.m_Y][coords.m_X] == '#'
+//               || m_Map->m_MapChar[coords.m_Y][coords.m_X] == '@'
                || m_Map->m_MapChar[coords.m_Y][coords.m_X] == 'E');
 }

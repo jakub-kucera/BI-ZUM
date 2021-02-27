@@ -29,25 +29,28 @@ void CInterface::paintMapColored() {
             std::cout << "\033[1;";
             switch (c) {
                 case 'X':
-                    std::cout << std::to_string(m_ColorTable.find("yellow")->second);
+                    std::cout << std::to_string(m_ColorTable.find("black")->second);
                     break;
                 case ' ':
                     std::cout << std::to_string(m_ColorTable.find("black")->second);
                     break;
                 case '#':
+                    std::cout << std::to_string(m_ColorTable.find("yellow")->second);
+                    break;
+                case '@':
                     std::cout << std::to_string(m_ColorTable.find("green")->second);
                     break;
                 case 'o':
                     std::cout << std::to_string(m_ColorTable.find("blue")->second);
                     break;
                 case 'S':
-                    std::cout << std::to_string(m_ColorTable.find("magenta")->second);
+                    std::cout << std::to_string(m_ColorTable.find("red")->second);
                     break;
                 case 'E':
-                    std::cout << std::to_string(m_ColorTable.find("magenta")->second);
+                    std::cout << std::to_string(m_ColorTable.find("red")->second);
                     break;
                 default:
-                    std::cout << std::to_string(m_ColorTable.find("red")->second);
+                    std::cout << std::to_string(m_ColorTable.find("cyan")->second);
                     break;
 
             }
@@ -79,6 +82,7 @@ void CInterface::paintExplanations() {
     std::cout << "S Start" << std::endl;
     std::cout << "E End" << std::endl;
     std::cout << "# Opened node" << std::endl;
+    std::cout << "@ Closed node" << std::endl;
     std::cout << "o Path" << std::endl;
     std::cout << "X Wall" << std::endl;
     std::cout << "space Fresh node" << std::endl;

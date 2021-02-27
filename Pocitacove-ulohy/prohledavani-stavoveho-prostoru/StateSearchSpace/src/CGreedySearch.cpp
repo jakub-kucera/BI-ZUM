@@ -22,6 +22,10 @@ void CGreedySearch::move() {
         return;
     }
 
+    if (coords != m_Map->m_Start) {
+        m_Map->m_MapChar[coords.m_Y][coords.m_X] = '@';
+    }
+
     m_Map->nodesExpanded++;
 
     //neighbors
