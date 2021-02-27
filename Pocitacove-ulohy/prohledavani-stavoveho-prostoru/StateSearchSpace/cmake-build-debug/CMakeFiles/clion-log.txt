@@ -1,1 +1,0 @@
-CMakeLists.txt not found in /home/kucerj56/Documents/ZUM/bi-zum-ls2021-kucerj56/Pocitacove-ulohy/prohledavani-stavoveho-prostoru/StateSearchSpace Select CMakeLists.txt
