@@ -1,7 +1,7 @@
 TARGET =  kucerj56
 
 CXX = g++
-CXX_FLAGS = -Wall -pedantic -Wextra -std=c++17 -g
+CXX_FLAGS = -std=c++17 -Wall -pedantic -Wextra -g
 
 MKDIR = mkdir -p
 BUILD_DIR = build

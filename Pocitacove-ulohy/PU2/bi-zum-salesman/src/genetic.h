@@ -11,8 +11,10 @@
 #include "tmatrix.h"
 #include <vector>
 
-typedef enum { CROSSOVER_METHOD_OX, CROSSOVER_METHOD_PMX } TCrossoverMethod;
+typedef enum {
+    CROSSOVER_METHOD_OX, CROSSOVER_METHOD_PMX
+} TCrossoverMethod;
 
-std::vector<int> salesmanProblemGenetic( TMatrix *matrix, TCrossoverMethod crossoverMethod);
+std::vector<int> salesmanProblemGenetic(TMatrix *matrix, TCrossoverMethod crossoverMethod);
 
 #endif // GENETIC_H
