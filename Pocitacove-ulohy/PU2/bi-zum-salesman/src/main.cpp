@@ -26,11 +26,13 @@ TMatrix *matrix = NULL;
 
 void usage( char *appname)
 {
-    char *app = strrchr( appname, '/');
+    char *app = strrchr(appname, '/');
     if (app == NULL) app = appname;
     else app++;
 
-    printf("Template for solving the Travelling Salesman Problem.\n"
+    printf("Project for solving the Travelling Salesman Problem.\n"
+           "(c) 2021 Jakub Kučera <kucerj56@fit.cvut.cz>\n\n"
+           "Based on a template from:\n\n"
            "(c) 2021 Ladislava Smítková Janků <ladislava.smitkova@fit.cvut.cz>\n\n"
            "Usage: %s <distances-file-csv> <algorithm>\n\n"
            "<distances-file-csv>   CSV file with distances. Each line contains\n"

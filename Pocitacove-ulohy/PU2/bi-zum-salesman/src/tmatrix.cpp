@@ -60,6 +60,7 @@ TMatrix::TMatrix( const char *csvFileName)
     char *p;
     int i;
     int cityNum = 0;
+    bool matrixNotInitialized = true;
 
     // Open input CSV file and load distance matrix and names of all cities.
     if ((f = fopen( csvFileName, "r")) == NULL)
@@ -77,7 +78,8 @@ TMatrix::TMatrix( const char *csvFileName)
             readCityName(&p);
 
             // Are we here for the first time?
-            if (!matrix) {
+            if (matrixNotInitialized) { //changed to use bool, because valgrind doesnt like conditional jumps on uninitialized values.
+                matrixNotInitialized = false;
                 // Yes. We need to calculate the number of cities.
                 // This value is equal to the number of fields followed after the city name.
 
