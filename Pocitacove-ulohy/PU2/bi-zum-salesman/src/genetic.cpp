@@ -87,7 +87,8 @@ void selection() {
     for (int i = 0; i < POPULATION; i++) {
         std::set<int> tournament;
 
-        for (int j = 0; j <= (rand() % (POPULATION / 2)); j++) {
+        for (int j = 0; j < 5; j++) {
+//            for (int j = 0; j <=  (rand() % (POPULATION/2)); j++) {
             tournament.insert(rand() % POPULATION);
         }
 
