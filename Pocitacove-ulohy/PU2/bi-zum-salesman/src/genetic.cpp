@@ -19,13 +19,15 @@
 //
 //---------------------------------------------------------------------------
 
-#include <stdio.h>
-#include <stdlib.h>
+#include <cstdio>
+#include <cstdlib>
 #include <unistd.h>
-#include <string.h>
-#include <limits.h>
+#include <cstring>
+#include <climits>
 #include <algorithm>
 #include <iostream>
+#include <map>
+#include <set>
 
 #include "genetic.h"
 #include "path.h"
@@ -71,26 +73,26 @@ void recalculate(TMatrix *matrix) {
     // compute Pr_i and q_i
     double q = 0;
     for (auto ind = individuals.begin(); ind != individuals.end(); ++ind) {
-        ind->Pr = ((double) ind->fitness) / sum_fitness;
+        ind->Pr = ind->fitness / sum_fitness;
         q += ind->Pr;
         ind->q = q;
     }
 }
 
 void selection() {
-    std::vector <TIndividual> newGeneration;
-
-    for (auto i = 0; i < POPULATION; i++) {
-        TIndividual newIndividual;
-        newIndividual.path = individuals[i].path;
-        newGeneration.emplace_back(newIndividual);
+    std::vector<TIndividual> newGeneration;
 
 
-        //****************************************************************
-        // ZDE IMPLEMENTUJTE SELEKCI (tvorba nove generace)
-        //
-        // newGeneration.push_back( ... );
-        //****************************************************************
+//    for (int j = 0; j < 2; j++) {
+    for (int i = 0; i < POPULATION; i++) {
+        std::set<int> tournament;
+
+        for (int j = 0; j <= (rand() % (POPULATION / 2)); j++) {
+            tournament.insert(rand() % POPULATION);
+        }
+
+        newGeneration.emplace_back(individuals[*tournament.begin()]);
+
     }
 
     // new generation was born
@@ -104,21 +106,21 @@ bool pathContainsCity(const std::vector<int> &path, int city) {
     return false;
 }
 
-//inserts city at the end of path, if the city is not already on the path
-void insertCityIfNotPresent(std::vector<int> &newPath, int city) {
-    bool found = false;
-    for (auto it : newPath) {
-        if (it == city) {
-            found = true;
-            break;
-        }
-    }
-    if (!found) {
-        newPath.emplace_back(city);
-    }
-}
+////inserts city at the end of path, if the city is not already on the path
+//void insertCityIfNotPresent(std::vector<int> &newPath, int city) {
+//    bool found = false;
+//    for (auto it : newPath) {
+//        if (it == city) {
+//            found = true;
+//            break;
+//        }
+//    }
+//    if (!found) {
+//        newPath.emplace_back(city);
+//    }
+//}
 
-void doCrossoverOX(std::vector <TIndividual> &result, TMatrix *matrix, TIndividual &a, TIndividual &b) {
+void doCrossoverOX(std::vector<TIndividual> &result, TMatrix *matrix, TIndividual &a, TIndividual &b) {
     TIndividual aa, bb;
 
     aa = a;
@@ -150,13 +152,23 @@ void doCrossoverOX(std::vector <TIndividual> &result, TMatrix *matrix, TIndividu
 
 
         // insert current city from the other path, if not already present
-        insertCityIfNotPresent(newPathA, currentCityB);
-        insertCityIfNotPresent(newPathB, currentCityA);
+        if (!pathContainsCity(newPathA, currentCityB)) {
+            newPathA.emplace_back(currentCityB);
+        }
+//        insertCityIfNotPresent(newPathA, currentCityB);
+
+
+        if (!pathContainsCity(newPathB, currentCityA)) {
+            newPathB.emplace_back(currentCityA);
+        }
+//        insertCityIfNotPresent(newPathB, currentCityA);
     }
 
     //rotates paths so that the middle part is in the correct place
-    std::rotate(newPathA.begin(), newPathA.begin() + sliceLow, newPathA.end());
-    std::rotate(newPathB.begin(), newPathB.begin() + sliceLow, newPathB.end());
+//    std::rotate(newPathA.begin(), newPathA.begin() + sliceLow, newPathA.end());
+//    std::rotate(newPathB.begin(), newPathB.begin() + sliceLow, newPathB.end());
+    std::rotate(newPathA.begin(), newPathA.end() - sliceLow, newPathA.end());
+    std::rotate(newPathB.begin(), newPathB.end() - sliceLow, newPathB.end());
 
 
     aa.path = newPathA;
@@ -168,14 +180,69 @@ void doCrossoverOX(std::vector <TIndividual> &result, TMatrix *matrix, TIndividu
 }
 
 void doCrossoverPMX(std::vector <TIndividual> &result, TMatrix *matrix, TIndividual &a, TIndividual &b) {
+
     TIndividual aa, bb;
 
     aa = a;
     bb = b;
 
-    //****************************************************************
-    // ZDE IMPLEMENTUJTE OPERATOR KRIZENI PMX
-    //****************************************************************
+    std::vector<int> newPathA;
+    std::vector<int> newPathB;
+
+    int citiesNum = a.path.size();
+
+    //computing slice locations
+    int sliceLow = rand() % (citiesNum - 1);
+    int sliceHigh = (rand() % (citiesNum - sliceLow + 1)) + sliceLow;
+
+    //insert middle part of genome
+    newPathA.insert(newPathA.begin(), a.path.begin() + sliceLow, a.path.begin() + sliceHigh);
+    newPathB.insert(newPathB.begin(), b.path.begin() + sliceLow, b.path.begin() + sliceHigh);
+
+    std::unordered_map<int, int> mapAtoB;
+    std::unordered_map<int, int> mapBtoA;
+
+    for (size_t i = 0; i < newPathA.size(); i++) {
+        mapAtoB.insert({newPathA[i], newPathB[i]});
+        mapBtoA.insert({newPathB[i], newPathA[i]});
+    }
+
+    int currentIndex = 0;
+    int currentCityA = 0;
+    int currentCityB = 0;
+
+    //insert the rest of cities in ordered crossover
+    for (int i = 0; i < citiesNum /*- (sliceHigh - sliceLow)*/; i++) {
+        currentIndex =
+                (sliceHigh + i) % citiesNum; //gets current city index. Allows to "go around" the array of cities.
+        currentCityA = a.path[currentIndex];
+        currentCityB = b.path[currentIndex];
+
+        // insert current city from the other path, if not already present
+        if (!pathContainsCity(newPathA, currentCityB)) {
+            newPathA.emplace_back(currentCityB);
+        }
+            // inserts current city from the other path substituted for a different city from the other path
+        else if (mapAtoB.find(currentCityB) != mapAtoB.end() && !pathContainsCity(newPathA, mapAtoB.at(currentCityB))) {
+            newPathA.emplace_back(mapAtoB.at(currentCityB));
+        }
+
+
+        if (!pathContainsCity(newPathB, currentCityA)) {
+            newPathB.emplace_back(currentCityA);
+        } else if (mapBtoA.find(currentCityA) != mapBtoA.end() &&
+                   !pathContainsCity(newPathB, mapBtoA.at(currentCityA))) {
+            newPathB.emplace_back(mapBtoA.at(currentCityA));
+        }
+    }
+
+    //rotates paths so that the middle part is in the correct place
+    std::rotate(newPathA.begin(), newPathA.end() - sliceLow, newPathA.end());
+    std::rotate(newPathB.begin(), newPathB.end() - sliceLow, newPathB.end());
+
+
+    aa.path = newPathA;
+    bb.path = newPathB;
 
     // propagate only childs
     result.push_back(aa);
@@ -214,14 +281,27 @@ void crossover(TMatrix *matrix, TCrossoverMethod crossoverMethod) {
     individuals = crossovered;
 }
 
+void randomPermutationMutation(TIndividual &individual) {
+    std::cout << "Before Mutation ";
+    printPath(individual.path);
+    for (int i = 0; i <= (int) (rand() % (individual.path.size() / 2)); i++) {
+        int a = (rand() % (individual.path.size() / 2));
+        int b = (rand() % (individual.path.size() / 2));
+        int tmp = individual.path[a];
+        individual.path[a] = individual.path[b];
+        individual.path[b] = tmp;
+//                std::cout << "SWAP" << a << "<->" << b << std::endl;
+    }
+    std::cout << "After Mutation ";
+    printPath(individual.path);
+    std::cout << std::endl;
+}
+
 void mutation(double probability) {
-    for (auto ind = individuals.begin(); ind != individuals.end(); ++ind) {
+    for (auto &individual : individuals) {
         if (drand48() <= probability) {
-
-            //****************************************************************
-            // ZDE IMPLEMENTUJTE OPERATOR MUTACE
-            //****************************************************************
-
+            //swaps random amount of value pairs
+            randomPermutationMutation(individual);
         }
     }
 }
@@ -241,6 +321,7 @@ std::vector<int> salesmanProblemGenetic(TMatrix *matrix, TCrossoverMethod crosso
 
     // initialization of random number generator
     srand(getpid());
+    //todo change to c++ way
 
     // born first population
     for (i = 0; i < POPULATION; i++) {
@@ -258,7 +339,10 @@ std::vector<int> salesmanProblemGenetic(TMatrix *matrix, TCrossoverMethod crosso
                 ind.path.push_back(x);
                 j++;
             }
+
         }
+        printPath(ind.path);
+        std::cout << std::endl;
 
         // Store this path into table of individuals.
         // Fitness and other parameters will be computed later.
@@ -266,38 +350,29 @@ std::vector<int> salesmanProblemGenetic(TMatrix *matrix, TCrossoverMethod crosso
     }
 
     // compute fitnesses and sort individuals
-//    printf("test1\n");
     recalculate(matrix);
-//    printf("test2\n");
     printState(0);
-//    printf("test3\n");
 
     // remember the best solution
     best = individuals.at(0).path;
     bestFitness = individuals.at(0).fitness;
-//    printf("test4\n");
 
     // run simulation
     for (i = 1; i < GENERATIONS; i++) {
         // selection: select individuals for a new generation
-//        printf("test5\n");
         selection();
 
-//        printf("test6\n");
         // crossover
         crossover(matrix, crossoverMethod);
 
-//        printf("test7\n");
         // mutation
         if (mutation_probability > 0) mutation(mutation_probability);
 
         // print the best result
-//        printf("test8\n");
         recalculate(matrix);
-//        printf("test9\n");
+
         printState(i);
 
-//        printf("test10\n");
         // if fitness < lastFitness, increase mutation probability by one step
         if (individuals.at(0).fitness < lastFitness) {
             mutation_probability += PROBABILITY_MUT_STEP;
@@ -311,7 +386,6 @@ std::vector<int> salesmanProblemGenetic(TMatrix *matrix, TCrossoverMethod crosso
             best = individuals.at(0).path;
             bestFitness = individuals.at(0).fitness;
         }
-//        printf("last\n");
     }
 
     return best;

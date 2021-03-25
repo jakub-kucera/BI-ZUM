@@ -31,7 +31,7 @@ void printPath( const std::vector<int> &path)
         if (i != path.begin()) printf(" ");
         printf("%d", *i);
     }
-    printf(" %d]", path[0]);
+    printf(" %d] L: %zu", path[0], path.size());
 }
 
 void printPathWithNames( const std::vector<int> &path, TMatrix *matrix)
