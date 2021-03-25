@@ -12,7 +12,7 @@
 #include <vector>
 
 typedef enum {
-    CROSSOVER_METHOD_OX, CROSSOVER_METHOD_PMX
+    CROSSOVER_METHOD_OX, CROSSOVER_METHOD_PMX, CROSSOVER_METHOD_ERX
 } TCrossoverMethod;
 
 std::vector<int> salesmanProblemGenetic(TMatrix *matrix, TCrossoverMethod crossoverMethod);
