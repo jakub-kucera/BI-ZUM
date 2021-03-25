@@ -49,6 +49,7 @@ void usage( char *appname)
            "<algorithm>            Algorithm to be used:\n\n"
            "                       bruteforce  Use brute force; try all variants.\n"
            "                       genetic-ox  Use genetic algorithm (OX crossover).\n"
+           "                       genetic-erx  Use genetic algorithm (ERX crossover).\n"
            "                       genetic-pmx Use genetic algorithm (PMX crossover).\n\n", app);
     exit(1);
 }

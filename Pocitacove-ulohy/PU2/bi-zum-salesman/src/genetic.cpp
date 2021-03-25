@@ -25,8 +25,6 @@
 #include <cstring>
 #include <climits>
 #include <algorithm>
-#include <iostream>
-#include <map>
 #include <set>
 #include <unordered_set>
 
@@ -51,21 +49,21 @@ bool compareByFitness(const TIndividual &a, const TIndividual &b) {
     return a.fitness > b.fitness;
 }
 
-double computeFitness(const std::vector<int> &path, TMatrix *matrix) {
+long long computeFitness(const std::vector<int> &path, TMatrix *matrix) {
     // Fitness Function (also known as the Evaluation Function) evaluates how close
     // a given solution is to the optimum solution of the desired problem.
     // It determines how fit a solution is.
 //    double fitness = ((double) 1) / calculatePathLength(path, matrix);
-    double fitness = -calculatePathLength(path, matrix);
+    long long fitness = -calculatePathLength(path, matrix);
     return fitness;
 }
 
 void recalculate(TMatrix *matrix) {
     // calculate fitness and Pr
     long long sum_fitness = 0;
-    for (auto ind = individuals.begin(); ind != individuals.end(); ++ind) {
-        ind->fitness = computeFitness(ind->path, matrix);
-        sum_fitness += ind->fitness;
+    for (auto &individual : individuals) {
+        individual.fitness = computeFitness(individual.path, matrix);
+        sum_fitness += individual.fitness;
     }
 
     // sort population by fitness
@@ -73,10 +71,10 @@ void recalculate(TMatrix *matrix) {
 
     // compute Pr_i and q_i
     double q = 0;
-    for (auto ind = individuals.begin(); ind != individuals.end(); ++ind) {
-        ind->Pr = ind->fitness / sum_fitness;
-        q += ind->Pr;
-        ind->q = q;
+    for (auto &individual : individuals) {
+        individual.Pr = (double) individual.fitness / (double) sum_fitness;
+        q += individual.Pr;
+        individual.q = q;
     }
 }
 
@@ -104,13 +102,13 @@ void selection(TCrossoverMethod crossoverMethod) {
 }
 
 bool pathContainsCity(const std::vector<int> &path, int city) {
-    for (auto x = path.begin(); x != path.end(); ++x) {
-        if (city == *x) return true;
+    for (int x : path) {
+        if (city == x) return true;
     }
     return false;
 }
 
-void doCrossoverOX(std::vector<TIndividual> &result, TMatrix *matrix, TIndividual &a, TIndividual &b) {
+void doCrossoverOX(std::vector<TIndividual> &result, TMatrix *, TIndividual &a, TIndividual &b) {
     TIndividual aa, bb;
 
     aa = a;
@@ -129,7 +127,7 @@ void doCrossoverOX(std::vector<TIndividual> &result, TMatrix *matrix, TIndividua
     newPathA.insert(newPathA.begin(), a.path.begin() + sliceLow, a.path.begin() + sliceHigh);
     newPathB.insert(newPathB.begin(), b.path.begin() + sliceLow, b.path.begin() + sliceHigh);
 
-    int currentIndex = 0;
+    int currentIndex;
     int currentCityA = 0;
     int currentCityB = 0;
 
@@ -169,7 +167,7 @@ void doCrossoverOX(std::vector<TIndividual> &result, TMatrix *matrix, TIndividua
     result.push_back(bb);
 }
 
-void doCrossoverPMX(std::vector<TIndividual> &result, TMatrix *matrix, TIndividual &a, TIndividual &b) {
+void doCrossoverPMX(std::vector<TIndividual> &result, TMatrix *, TIndividual &a, TIndividual &b) {
 
     TIndividual aa, bb;
 
@@ -197,7 +195,7 @@ void doCrossoverPMX(std::vector<TIndividual> &result, TMatrix *matrix, TIndividu
         mapBtoA.insert({newPathB[i], newPathA[i]});
     }
 
-    int currentIndex = 0;
+    int currentIndex;
     int currentCityA = 0;
     int currentCityB = 0;
 
@@ -234,12 +232,12 @@ void doCrossoverPMX(std::vector<TIndividual> &result, TMatrix *matrix, TIndividu
     aa.path = newPathA;
     bb.path = newPathB;
 
-    // propagate only childs
+    // propagate only children
     result.push_back(aa);
     result.push_back(bb);
 }
 
-void doCrossoverERX(std::vector<TIndividual> &result, TMatrix *matrix, TIndividual &a, TIndividual &b) {
+void doCrossoverERX(std::vector<TIndividual> &result, TMatrix *, TIndividual &a, TIndividual &b) {
 
     TIndividual aa;
     aa = a;
@@ -343,19 +341,13 @@ void crossover(TMatrix *matrix, TCrossoverMethod crossoverMethod) {
 }
 
 void randomPermutationMutation(TIndividual &individual) {
-//    std::cout << "Before Mutation ";
-//    printPath(individual.path);
     for (int i = 0; i <= (int) (rand() % (individual.path.size() / 2)); i++) {
         int a = (rand() % (individual.path.size() / 2));
         int b = (rand() % (individual.path.size() / 2));
         int tmp = individual.path[a];
         individual.path[a] = individual.path[b];
         individual.path[b] = tmp;
-//                std::cout << "SWAP" << a << "<->" << b << std::endl;
     }
-//    std::cout << "After Mutation ";
-//    printPath(individual.path);
-//    std::cout << std::endl;
 }
 
 void mutation(double probability) {
@@ -402,8 +394,6 @@ std::vector<int> salesmanProblemGenetic(TMatrix *matrix, TCrossoverMethod crosso
             }
 
         }
-//        printPath(ind.path);
-//        std::cout << std::endl;
 
         // Store this path into table of individuals.
         // Fitness and other parameters will be computed later.
