@@ -28,6 +28,7 @@
 #include <iostream>
 #include <map>
 #include <set>
+#include <unordered_set>
 
 #include "genetic.h"
 #include "path.h"
@@ -44,7 +45,7 @@ typedef struct {
     double q;
 } TIndividual;
 
-std::vector <TIndividual> individuals;
+std::vector<TIndividual> individuals;
 
 bool compareByFitness(const TIndividual &a, const TIndividual &b) {
     return a.fitness > b.fitness;
@@ -79,21 +80,23 @@ void recalculate(TMatrix *matrix) {
     }
 }
 
-void selection() {
+void selection(TCrossoverMethod crossoverMethod) {
     std::vector<TIndividual> newGeneration;
 
+    //if the crossover method is ERX, then selection generates 2x bigger population
+    int outputPopulationSize = POPULATION;
+    if (crossoverMethod == CROSSOVER_METHOD_ERX) {
+        outputPopulationSize *= 2;
+    }
 
-//    for (int j = 0; j < 2; j++) {
-    for (int i = 0; i < POPULATION; i++) {
+    for (int i = 0; i < outputPopulationSize; i++) {
         std::set<int> tournament;
 
         for (int j = 0; j < 5; j++) {
 //            for (int j = 0; j <=  (rand() % (POPULATION/2)); j++) {
             tournament.insert(rand() % POPULATION);
         }
-
         newGeneration.emplace_back(individuals[*tournament.begin()]);
-
     }
 
     // new generation was born
@@ -106,20 +109,6 @@ bool pathContainsCity(const std::vector<int> &path, int city) {
     }
     return false;
 }
-
-////inserts city at the end of path, if the city is not already on the path
-//void insertCityIfNotPresent(std::vector<int> &newPath, int city) {
-//    bool found = false;
-//    for (auto it : newPath) {
-//        if (it == city) {
-//            found = true;
-//            break;
-//        }
-//    }
-//    if (!found) {
-//        newPath.emplace_back(city);
-//    }
-//}
 
 void doCrossoverOX(std::vector<TIndividual> &result, TMatrix *matrix, TIndividual &a, TIndividual &b) {
     TIndividual aa, bb;
@@ -180,7 +169,7 @@ void doCrossoverOX(std::vector<TIndividual> &result, TMatrix *matrix, TIndividua
     result.push_back(bb);
 }
 
-void doCrossoverPMX(std::vector <TIndividual> &result, TMatrix *matrix, TIndividual &a, TIndividual &b) {
+void doCrossoverPMX(std::vector<TIndividual> &result, TMatrix *matrix, TIndividual &a, TIndividual &b) {
 
     TIndividual aa, bb;
 
@@ -212,7 +201,7 @@ void doCrossoverPMX(std::vector <TIndividual> &result, TMatrix *matrix, TIndivid
     int currentCityA = 0;
     int currentCityB = 0;
 
-    //insert the rest of cities in ordered crossover
+    //insert the rest of cities in PMX crossover
     for (int i = 0; i < citiesNum /*- (sliceHigh - sliceLow)*/; i++) {
         currentIndex =
                 (sliceHigh + i) % citiesNum; //gets current city index. Allows to "go around" the array of cities.
@@ -250,8 +239,77 @@ void doCrossoverPMX(std::vector <TIndividual> &result, TMatrix *matrix, TIndivid
     result.push_back(bb);
 }
 
+void doCrossoverERX(std::vector<TIndividual> &result, TMatrix *matrix, TIndividual &a, TIndividual &b) {
+
+    TIndividual aa;
+    aa = a;
+    std::vector<int> newPath;
+
+    //contains elements that are still not on final path
+    std::set<int> notOnNewPath;
+    for (auto i : a.path) {
+        notOnNewPath.insert(i);
+    }
+
+    //pathLength
+    size_t citiesNum = a.path.size();
+
+    std::unordered_map<int, std::set<int>> neighbours;
+
+    //inserts neighbours for cities
+    for (size_t i = 0; i < citiesNum - 1; i++) {
+        neighbours[a.path[i]].insert(a.path[i + 1]);
+        neighbours[b.path[i]].insert(b.path[i + 1]);
+    }
+    //inserts neighbors from the other side of paths
+    neighbours[a.path[0]].insert(a.path[citiesNum - 1]);
+    neighbours[b.path[0]].insert(b.path[citiesNum - 1]);
+    neighbours[a.path[citiesNum - 1]].insert(a.path[0]);
+    neighbours[b.path[citiesNum - 1]].insert(b.path[0]);
+
+//    int currentIndex = 0;
+    int currentCity = 0;
+
+    //randomly pics first city from path A or B
+    if (rand() % 2 == 1) {
+        currentCity = a.path[0];
+    } else {
+        currentCity = b.path[0];
+    }
+
+    //insert the the cities in ERX crossover
+    while (true) {
+        //insert city on path
+        newPath.emplace_back(currentCity);
+        notOnNewPath.erase(currentCity);
+
+        //end cycle if all cities are on the final path
+        if (newPath.size() == citiesNum) {
+            break;
+        }
+
+        //erases this city as a neighbour from other cities
+        for (size_t j = 0; j < citiesNum; j++) {
+            neighbours[j].erase(currentCity);
+        }
+
+        if (!neighbours[currentCity].empty()) {
+            //pick random element from current city's neighbours
+            currentCity = *std::next(std::begin(neighbours[currentCity]), rand() % neighbours[currentCity].size());
+        } else {
+            //pick random city, not in newPath. (notOnNewPath is unordered_set, so 1st element is picked on "random")
+            currentCity = *std::next(std::begin(notOnNewPath), rand() % notOnNewPath.size());
+        }
+
+    }
+
+    aa.path = newPath;
+    // propagate only child
+    result.push_back(aa);
+}
+
 void crossover(TMatrix *matrix, TCrossoverMethod crossoverMethod) {
-    std::vector <TIndividual> crossovered;
+    std::vector<TIndividual> crossovered;
     std::vector<TIndividual>::iterator candidate = individuals.end();
 
     for (auto ind = individuals.begin(); ind != individuals.end(); ++ind) {
@@ -264,8 +322,10 @@ void crossover(TMatrix *matrix, TCrossoverMethod crossoverMethod) {
                 // now we have both parents, we can do crossover
                 if (crossoverMethod == CROSSOVER_METHOD_PMX)
                     doCrossoverPMX(crossovered, matrix, *ind, *candidate);
-                else
+                else if (crossoverMethod == CROSSOVER_METHOD_OX)
                     doCrossoverOX(crossovered, matrix, *ind, *candidate);
+                else
+                    doCrossoverERX(crossovered, matrix, *ind, *candidate);
 
                 candidate = individuals.end();
             }
@@ -283,8 +343,8 @@ void crossover(TMatrix *matrix, TCrossoverMethod crossoverMethod) {
 }
 
 void randomPermutationMutation(TIndividual &individual) {
-    std::cout << "Before Mutation ";
-    printPath(individual.path);
+//    std::cout << "Before Mutation ";
+//    printPath(individual.path);
     for (int i = 0; i <= (int) (rand() % (individual.path.size() / 2)); i++) {
         int a = (rand() % (individual.path.size() / 2));
         int b = (rand() % (individual.path.size() / 2));
@@ -293,9 +353,9 @@ void randomPermutationMutation(TIndividual &individual) {
         individual.path[b] = tmp;
 //                std::cout << "SWAP" << a << "<->" << b << std::endl;
     }
-    std::cout << "After Mutation ";
-    printPath(individual.path);
-    std::cout << std::endl;
+//    std::cout << "After Mutation ";
+//    printPath(individual.path);
+//    std::cout << std::endl;
 }
 
 void mutation(double probability) {
@@ -342,8 +402,8 @@ std::vector<int> salesmanProblemGenetic(TMatrix *matrix, TCrossoverMethod crosso
             }
 
         }
-        printPath(ind.path);
-        std::cout << std::endl;
+//        printPath(ind.path);
+//        std::cout << std::endl;
 
         // Store this path into table of individuals.
         // Fitness and other parameters will be computed later.
@@ -361,7 +421,7 @@ std::vector<int> salesmanProblemGenetic(TMatrix *matrix, TCrossoverMethod crosso
     // run simulation
     for (i = 1; i < GENERATIONS; i++) {
         // selection: select individuals for a new generation
-        selection();
+        selection(crossoverMethod);
 
         // crossover
         crossover(matrix, crossoverMethod);

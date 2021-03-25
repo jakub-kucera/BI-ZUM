@@ -21,6 +21,7 @@
 #define ALGO_BRUTEFORCE   1
 #define ALGO_GENETIC_OX   2
 #define ALGO_GENETIC_PMX  3
+#define ALGO_GENETIC_ERX  4
 
 TMatrix *matrix = NULL;
 
@@ -64,10 +65,10 @@ int main(int argc, char *argv[])
     if (strcmp( argv[2], "bruteforce") == 0) algorithm = ALGO_BRUTEFORCE;
     else
     if (strcmp( argv[2], "genetic-ox") == 0) algorithm = ALGO_GENETIC_OX;
+    else if (strcmp(argv[2], "genetic-pmx") == 0) algorithm = ALGO_GENETIC_PMX;
+    else if (strcmp(argv[2], "genetic-erx") == 0) algorithm = ALGO_GENETIC_ERX;
     else
-    if (strcmp( argv[2], "genetic-pmx") == 0) algorithm = ALGO_GENETIC_PMX;
-    else
-        usage( argv[0]);
+        usage(argv[0]);
 
     try {
         // Load matrix with distances and run the algorithm.
@@ -83,11 +84,15 @@ int main(int argc, char *argv[])
                     break;
 
                 case ALGO_GENETIC_OX:
-                    result = salesmanProblemGenetic( matrix, CROSSOVER_METHOD_OX);
+                    result = salesmanProblemGenetic(matrix, CROSSOVER_METHOD_OX);
                     break;
 
                 case ALGO_GENETIC_PMX:
-                    result = salesmanProblemGenetic( matrix, CROSSOVER_METHOD_PMX);
+                    result = salesmanProblemGenetic(matrix, CROSSOVER_METHOD_PMX);
+                    break;
+
+                case ALGO_GENETIC_ERX:
+                    result = salesmanProblemGenetic(matrix, CROSSOVER_METHOD_ERX);
                     break;
 
                 default:
